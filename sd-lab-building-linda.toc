@@ -1,0 +1,12 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Wetting your appetite}{2}{0}{1}
+\beamer@sectionintoc {2}{Linda Recap}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Overview}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Primitives}{8}{0}{2}
+\beamer@subsectionintoc {2}{3}{The blackboard metaphor}{10}{0}{2}
+\beamer@subsectionintoc {2}{4}{Semantics}{21}{0}{2}
+\beamer@sectionintoc {3}{Implementing {\textsc {Linda}}{} in Java}{24}{0}{3}
+\beamer@subsectionintoc {3}{1}{Design}{25}{0}{3}
+\beamer@subsectionintoc {3}{2}{Tuples \& Templates interfaces}{27}{0}{3}
+\beamer@subsectionintoc {3}{3}{Text-based Tuple Spaces in Java}{29}{0}{3}
+\beamer@subsectionintoc {3}{4}{Exercise 3-1}{34}{0}{3}

@@ -1,0 +1,25 @@
+@startuml
+title Design of the ""out"" primitive
+
+actor Agent
+queue CompletableFuture
+database TupleSpace
+queue PendingCompletableFuture
+
+Agent -> TupleSpace: ""out"" of some ""**tuple**""
+TupleSpace -> CompletableFuture: //create//
+Agent <-- TupleSpace: //completable future reference//
+
+== Behind the scenes ==
+
+TupleSpace -> TupleSpace : //add// ""**tuple**""
+
+loop for all ""**PendingRequest**"" containing a ""**Template**"" matching ""**tuple**""
+PendingCompletableFuture -> TupleSpace: //get reference//
+TupleSpace -> PendingCompletableFuture: //complete with// ""**tuple**""
+alt ""**PendingRequest**"" is from some suspended ""in"" primitive
+TupleSpace -> TupleSpace : //remove// ""**tuple**"" and **break loop**
+end
+end
+TupleSpace -> CompletableFuture: //complete with// ""**tuple**""
+@enduml

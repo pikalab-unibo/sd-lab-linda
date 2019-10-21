@@ -1,0 +1,22 @@
+@startuml
+title Design of ""rd"" or ""in"" primitives
+
+actor Agent
+queue CompletableFuture
+database TupleSpace
+
+Agent -> TupleSpace: ""rd"" or ""in"" on some ""**Template**""
+TupleSpace -> CompletableFuture: //create//
+Agent <-- TupleSpace: //completable future reference//
+
+== Behind the scenes ==
+
+alt a ""**tuple**"" matching ""**Template**"" exists
+alt operation is ""in""
+TupleSpace -> TupleSpace : //remove// ""**tuple**""
+end
+TupleSpace -> CompletableFuture: //complete with// ""**tuple**""
+else no tuple matching ""**Template**"" exists
+TupleSpace -> TupleSpace : //append new// ""**PendingRequest**""
+end
+@enduml

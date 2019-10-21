@@ -1,3 +1,4 @@
+// Just a wrapper interface
 interface Tuple {
-  // Just a tag interface
+  Object getValue();
 }

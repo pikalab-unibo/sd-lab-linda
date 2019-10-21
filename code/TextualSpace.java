@@ -1,4 +1,4 @@
-class TextTupleSpace 
+class TextualSpace 
      implements TupleSpace<StringTuple, RegexTemplate> {
 
   private String name;
@@ -6,34 +6,31 @@ class TextTupleSpace
   private MultiSet<StringTuple> tuples = new HashMultiSet<>();
   private MultiSet<PendingRequest> pendings = new HashMultiSet<>();
   
-  public TextTupleSpace(String name, ExecutorService executor) {
+  public TextualSpace(String name, ExecutorService executor) {
     this.name = Objects.requireNonNull(name);
     this.executor = Objects.requireNonNull(executor);
   }
   
-  public Future<StringTuple> read(RegexTemplate template) {
+  public CompletableFuture<StringTuple> rd(RegexTemplate tt) {
     // TODO: implement
   }
   
-  public Future<StringTuple> take(RegexTemplate template) {
+  public CompletableFuture<StringTuple> in(RegexTemplate tt) {
     // TODO: implement
   }
   
-  public Future<StringTuple> write(StringTuple tuple) {
+  public CompletableFuture<StringTuple> out(StringTuple t) {
     // TODO: implement
   }
   
-  public Future<Integer> getSize() {
+  public CompletableFuture<Integer> getSize() {
     // TODO: implement
   }
   
-  public Future<MultiSet<? extends T>> get() {
-    // (Optional) TODO: implement
+  public CompletableFuture<MultiSet<? extends StringTuple>> get() {
+    // TODO: implement
   }
   
   public String getName() { return name; } 
   
-  
-  private enum RequestTypes { READ, TAKE; }
-  private static class PendingRequest { /* ... */ }
 }

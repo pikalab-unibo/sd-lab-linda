@@ -256,9 +256,9 @@ If agent $A$ terminates, crashes, or disconnects, $t$ will keep existing on $TS$
 
 \item[Associative] | tuples are \alert{accessed} (read or taken) in an associative way: instead of using a name, or an address, agents can specify \alert{templates} in order to access tuples
 
-\item[Suspensive] | whenever an agent $A$ invokes the \texttt{rd($\bar{t}$)} or \texttt{in($\bar{t}$)} over a particular template $\bar{t}$, on a particular tuple space $TS$, if not tuple $t$ matching $\bar{t}$ exists on $TS$, the operation is \alert{suspended} until $t$ is inserted into $TS$ by some agent performing a \texttt{write($t$)} operation
+\item[Suspensive] | whenever an agent $A$ invokes the \texttt{rd($\bar{t}$)} or \texttt{in($\bar{t}$)} over a particular template $\bar{t}$, on a particular tuple space $TS$, if not tuple $t$ matching $\bar{t}$ exists on $TS$, the operation is \alert{suspended} until $t$ is inserted into $TS$ by some agent performing a \texttt{out($t$)} operation
 
-\item[Non-deterministic] | whenever an agent $A$ invokes the \texttt{read($\bar{t}$)} or \texttt{take($\bar{t}$)} operation, if more than one tuple $t$, $t'$, $t''$ exist matching  $\bar{t}$, one is retrieved \alert{non-deterministically}
+\item[Non-deterministic] | whenever an agent $A$ invokes the \texttt{rd($\bar{t}$)} or \texttt{in($\bar{t}$)} operation, if more than one tuple $t$, $t'$, $t''$ exist matching  $\bar{t}$, one is read or taken  \alert{non-deterministically}
 
 \end{description}
 
@@ -273,26 +273,20 @@ If agent $A$ terminates, crashes, or disconnects, $t$ will keep existing on $TS$
 \frametitle{\linda{} as a Java interface}
 
 \begin{itemize}
-	\item A tuple space can be easily conceived as an \alert{object} in the OOP sense
+	\item A TS can be easily conceived as an \alert{object} in the OOP sense
 	
 	\vfill
 	
-	\item But how should control-flow related aspects be faces?
+	\item which is generic in the type of tuples (i.e. \texttt{\alert{T}}) and templates (i.e. \texttt{\alert{TT}})
+	
+	\vfill
+	
+	\item where primitives return \alert{\texttt{CompletableFuture}s} to deal with suspension \& latency
 \end{itemize}
 
 \vfill
 
 \lstinputlisting{./code/TupleSpace.java}
-
-\vfill
-
-\begin{itemize}
-	\item Where \texttt{Future<X>} is the return type for \alert{asynchronous} operations
-	%
-	\begin{itemize}
-		\item its functioning will be clear in a few slides
-	\end{itemize}
-\end{itemize}
 \end{frame}
 
 \subsection{Tuples \& Templates interfaces} 
@@ -308,10 +302,16 @@ If agent $A$ terminates, crashes, or disconnects, $t$ will keep existing on $TS$
 
 \begin{itemize}
 \item Tuples may be potentially anything
-
-
+%
+\begin{itemize}
+	\item[eg] strings, objects, JSON files, XML files, logic terms, \ldots
+\end{itemize}
 
 \item Templates may be anything able to match a tuple, somehow
+%
+\begin{itemize}
+	\item[eg] regular expressions, SQL, JsonPath, XPath, logic terms, \ldots
+\end{itemize}
 \end{itemize}
 
 \vfill
@@ -331,7 +331,7 @@ We will implement the \texttt{TupleSpace} interface by means of the \texttt{\ale
 %
 \vfill
 %
-\begin{itemize}
+\begin{itemize}	
 \item Strings are used as tuples, meaning that the \texttt{java.lang.\alert{String}} class is used to reify tuples
 %
 \begin{itemize}
@@ -395,13 +395,13 @@ We will implement the \texttt{TupleSpace} interface by means of the \texttt{\ale
 \end{itemize}  
 \end{frame}
 
-\subsection{Exercise 3-1} 
+\subsection{Exercise 4-1} 
 
 \begin{frame}[allowframebreaks]
-\frametitle{Exercise 3-1: Text-based Tuple Spaces in Java}
+\frametitle{Exercise 4-1: Text-based Tuple Spaces in Java}
 
 \begin{enumerate}
-	\item Clone the initial source code from \url{https://gitlab.com/das-lab/courses/ds/aa1819/lab-3}
+	\item Clone the initial source code from \url{https://gitlab.com/pika-lab/courses/ds/aa1920/lab-4}
 	
 	\item Import the project into your favourite IDE as a Gradle project
 	
@@ -416,22 +416,19 @@ We will implement the \texttt{TupleSpace} interface by means of the \texttt{\ale
 	Read them and try to understand them
 \end{enumerate}
 
-\lstinputlisting{./code/TextTupleSpace.java}
+\lstinputlisting{./code/TextualSpace.java}
 
 \framebreak
 
-Your solution must satisfy the following constraints:
+A valid implementation must satisfy the following constraints:
 %
 \begin{itemize}
 	
-	\item The \alert{unit tests} contained within the \alert{\texttt{TestTextTupleSpace}} class must be satisfied
+	\item The \alert{unit tests} contained within the \alert{\texttt{TestTextualSpace}} class must be satisfied
 	%
 	\begin{itemize}
 		\item use them usage as examples
-		\item consider looking at the other \texttt{Test*} classes, in order to understand how Executor Services or Futures work
 	\end{itemize}
-	
-	\item You \alert{shouldn't need any threads}, just use Executor Services and Active Objects (to act as Agents)
 	
 	\item The tuple space must work regardless of the particular Executor Service it is initialised with
 	
@@ -443,28 +440,73 @@ Your solution must satisfy the following constraints:
 	%
 	Otherwise, just wait for the teacher's tutorial
 \end{itemize}
+\end{frame}
 
-\framebreak
+\begin{frame}
+%\frametitle{Design of access primitives (i.e. \texttt{in} and \texttt{rd})}
 
-While solving your exercise on your branch:
-%
-\vspace{.3cm}
-%
-\begin{alertblock}{It is strictly \textbf{forbidden}}
-	\begin{itemize}
-		\item to alter, remove, ignore, or comment the \alert{\texttt{.gitlab-ci.yml}} file on your branch
-		\item to alter, remove, ignore, or comment the provided test classes
-		\item[!] submissions subject to such kind of problems will be considered \alert{late}
-	\end{itemize}
-\end{alertblock}
-%
-\vspace{.3cm}
-%
-\begin{exampleblock}{If you understand some test is faulty or ill-constructed}
-	\begin{itemize}
-		\item you \alert{must} post the information on the forum \alert{as soon as possible}
-	\end{itemize}
-\end{exampleblock}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{./img/rd-and-in-design.pdf}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{About pending requests}
+
+\begin{itemize}
+	\item Pending requests represent \alert{suspended} \texttt{in} and \texttt{rd} primitives to be eventually resumed by some \texttt{out}
+	
+	\vfill
+	
+	\item Each pending request carries the following information:
+	%
+	\begin{enumerate}
+		\item the \alert{type} of the suspended primitive (i.e. either \texttt{in} or \texttt{rd})
+		\item the \alert{template} the suspended primitive is waiting for
+		\item some means to \alert{unlock} or resume the suspended primitive
+		%
+		\begin{itemize}
+			\item[eg] the \texttt{\alert{CompletableFuture}} created when the suspended primitive has been invoked
+		\end{itemize}
+	\end{enumerate}
+
+	\vfill
+	
+	\item[?] Can you tell \alert{why} all such information is needed?
+	
+	\vfill
+	
+	\item Have a look to the \href{https://gitlab.com/pika-lab/courses/ds/aa1920/lab-04/blob/master/src/main/java/sd/lab/linda/textual/impl/PendingRequest.java}{\texttt{sd.lab.linda.textual.impl.\alert{PendingRequest}}} class for more details
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{center}
+	\includegraphics[width=\linewidth]{./img/out-design.pdf}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{General structure for primitives implementation}
+
+\lstinputlisting{./code/GeneralPrimitiveImplementation.java}
+
+\begin{itemize}
+	\item[?] what's the purpose of the \texttt{\alert{synchronized}} keyword?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Implementing the \texttt{rd} primitite}
+	\lstinputlisting{./code/TextualSpace_read.java}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Implementing the \texttt{in} primitite}
+\lstinputlisting{./code/TextualSpace_in.java}
 \end{frame}
 
 %===============================================================================

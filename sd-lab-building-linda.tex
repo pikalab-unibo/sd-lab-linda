@@ -116,17 +116,17 @@
 
 %
 \begin{description}
-	\item[\texttt{out}] or \alert{\texttt{write}} | let agents \alert{insert} a tuple into a tuple space 
+	\item[\texttt{out}] | let agents \alert{write} (or \alert{insert}) a tuple into a tuple space 
 	
 	
 	
-	\item[\texttt{rd}] or \alert{\texttt{read}} | let agents know if a tuple matching a particular template \alert{exists} on a tuple space. 
+	\item[\texttt{rd}] (shortcut for \alert{read}) | let agents know if a tuple matching a particular template \alert{exists} on a tuple space. 
 	%
 	If it is the case, agents can also read the content of such a tuple
 	
 	
 	
-	\item[\texttt{in}] or \alert{\texttt{take}} | let agents \alert{retrieve} (or \alert{consume}) a tuple matching a particular template on a tuple space, if any
+	\item[\texttt{in}] | let agents \alert{take} (or \alert{consume}) a tuple matching a particular template on a tuple space, if any
 \end{description}
 
 
@@ -164,10 +164,11 @@
 \frametitle{The blackboard metaphor}
 
 \begin{enumerate}\setcounter{enumi}{2}
-\item where agents can \alert{\texttt{write}} any sort of information---[i.e.] \alert{tuples}
-\begin{itemize}
-\item according to some \alert{representation} format of choice 
-\end{itemize}
+    \item where agents can \alert{\texttt{write}} any sort of information---[i.e.] \alert{tuples}
+    \begin{itemize}
+        \item according to some \alert{representation} format of choice 
+        \item through primitive \alert{\texttt{out}}
+    \end{itemize}
 %
 \begin{center}
 \includegraphics[width=\linewidth]{./img/write-\arabic{imagenumber}.pdf}
@@ -185,9 +186,10 @@
 \begin{enumerate}\setcounter{enumi}{3}
 
 \item where agents can \alert{\texttt{read}} all information matching a particular \alert{template}
-\begin{itemize}
-\item according to some \alert{query} language of choice 
-\end{itemize}
+    \begin{itemize}
+        \item according to some \alert{query} language of choice 
+        \item through primitive \alert{\texttt{rd}}
+    \end{itemize}
 %
 \begin{center}
 \includegraphics[width=\linewidth]{./img/read-\arabic{imagenumber}.pdf}
@@ -204,6 +206,10 @@
 \begin{enumerate}\setcounter{enumi}{4}
 
 \item or \alert{\texttt{take}} it, making it unaccessible for other agents
+%
+\begin{itemize}
+    \item through primitive \alert{\texttt{in}}
+\end{itemize}
 %
 \begin{center}
 \includegraphics[width=\linewidth]{./img/take-\arabic{imagenumber}.pdf}
@@ -244,13 +250,13 @@ In what follows, we will use the following notation:
 \label{linda-semantics}
 
 \begin{description}
-\item[Generative] | after an agent $A$ performs a \texttt{write($t$)} operation on some tuple space $TS$, tuple $t$ \alert{exists} regardless of $A$. 
+\item[Generative] | after an agent $A$ performs a \texttt{out($t$)} operation on some tuple space $TS$, tuple $t$ \alert{exists} regardless of $A$. 
 %
 If agent $A$ terminates, crashes, or disconnects, $t$ will keep existing on $TS$
 
 \item[Associative] | tuples are \alert{accessed} (read or taken) in an associative way: instead of using a name, or an address, agents can specify \alert{templates} in order to access tuples
 
-\item[Suspensive] | whenever an agent $A$ invokes the \texttt{read($\bar{t}$)} or \texttt{take($\bar{t}$)} over a particular template $\bar{t}$, on a particular tuple space $TS$, if not tuple $t$ matching $\bar{t}$ exists on $TS$, the operation is \alert{suspended} until $t$ is inserted into $TS$ by some agent performing a \texttt{write($t$)} operation
+\item[Suspensive] | whenever an agent $A$ invokes the \texttt{rd($\bar{t}$)} or \texttt{in($\bar{t}$)} over a particular template $\bar{t}$, on a particular tuple space $TS$, if not tuple $t$ matching $\bar{t}$ exists on $TS$, the operation is \alert{suspended} until $t$ is inserted into $TS$ by some agent performing a \texttt{write($t$)} operation
 
 \item[Non-deterministic] | whenever an agent $A$ invokes the \texttt{read($\bar{t}$)} or \texttt{take($\bar{t}$)} operation, if more than one tuple $t$, $t'$, $t''$ exist matching  $\bar{t}$, one is retrieved \alert{non-deterministically}
 

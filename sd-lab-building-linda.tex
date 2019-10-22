@@ -34,7 +34,19 @@
 \frametitle{Motivation \& Lecture Goals}
 
 \begin{itemize}
-	\item
+	\item Our path towards the creation of a \linda{}-based, agent-oriented, distributed framework steps through the creation of a basic, local \linda{} library
+	
+	\vfill
+	
+	\item In this lecture we build such a local implementation
+	
+	\vfill
+	
+	\item We show how to \alert{design \& build} a \linda{} implementation for multi-threaded applications in Java
+	
+	\vfill
+	
+	\item In future lectures we will evolve such local, platform specific implementation towards a \alert{distributed} \&  \alert{platform-independent} one
 \end{itemize}
 
 \end{frame}
@@ -316,8 +328,12 @@ If agent $A$ terminates, crashes, or disconnects, $t$ will keep existing on $TS$
 
 \vfill
 
-\begin{block}{Of course, this is just an abstract model}
-How should we \alert{actually} implement it?
+\begin{block}{When designing some \linda{} implementation, you must decide}
+	\begin{itemize}
+		\item How to represent data (i.e. \alert{tuples})
+		\item How to represent queries (i.e. \alert{templates})
+		\item Which is the desired semantics for queries (i.e. the \alert{matching} mechanism)
+	\end{itemize}
 \end{block}
 
 \end{frame}
@@ -327,26 +343,26 @@ How should we \alert{actually} implement it?
 \begin{frame}%[allowframebreaks]
 \frametitle{Text-based Tuple Spaces in Java, idea}
 
-We will implement the \texttt{TupleSpace} interface by means of the \texttt{\alert{Text}TupleSpace} class, where:
+We will implement the \texttt{TupleSpace} interface by means of the \texttt{\alert{Textual}Space} class, where:
 %
 \vfill
 %
 \begin{itemize}	
-\item Strings are used as tuples, meaning that the \texttt{java.lang.\alert{String}} class is used to reify tuples
+\item Strings are used as tuples, meaning that the \texttt{\alert{String}} class is used to reify tuples
 %
 \begin{itemize}
-\item[i.e.] \texttt{T = String}
+\item[i.e.] \texttt{T $\rightarrow$ java.lang.\alert{String}}
 \end{itemize}
 
+\vfill
 
-
-\item Regular Expressions (regex) are used as templates, meaning that the \texttt{java.util.regex.\alert{Pattern}} class is used to reify templates
+\item Regular Expressions (regex) are used as templates, meaning that the \texttt{\alert{Pattern}} class is used to reify templates
 %
 \begin{itemize}
-\item[i.e.] \texttt{TT = Pattern}
+\item[i.e.] \texttt{TT $\rightarrow$ java.util.regex.\alert{Pattern}}
 \end{itemize}
 
-
+\vfill
 
 \item The matching consists of \alert{deciding} whether a string matches a regex
 
@@ -355,6 +371,32 @@ We will implement the \texttt{TupleSpace} interface by means of the \texttt{\ale
 \item[!] If you are not practical with regex, you can acquire some experience or simply test your patterns with \url{https://regex101.com}
 \end{itemize}
 
+\end{frame}
+
+\newcommand{\bs}[1]{\textbackslash{}#1}
+
+\begin{frame}
+\frametitle{\href{https://regex101.com/}{Regex101.com} -- Example}
+
+\begin{itemize}
+	\item Could you say what's the meaning of the following regex?
+	%
+	\begin{center}
+		\small\alert{
+			\texttt{\bs{s}*to\bs{s}*:\bs{s}*"([A-Za-z ]+)",\bs{s}*from\bs{s}*:\bs{s}*"([A-Za-z ]+)"\bs{s}*}}
+	\end{center}
+	%
+	
+	%
+	\begin{center}
+		\includegraphics[width=.7\linewidth]{./img/regex101.png}
+	\end{center}
+	
+	\item \url{https://regex101.com/r/2eU8aO/2} provides an interactive explanation of the regex above (on the right side) 
+	
+	\item you can test your regex on the fly against any input string
+	
+\end{itemize}  
 \end{frame}
 
 \begin{frame}
@@ -369,30 +411,6 @@ We will implement the \texttt{TupleSpace} interface by means of the \texttt{\ale
 
 \lstinputlisting{./code/RegexTemplate.java}
 
-\end{frame}
-
-\begin{frame}
-\frametitle{\href{https://regex101.com/}{Regex101.com} -- Example}
-
-\begin{itemize}
-\item Could you say what's the meaning of the following regex?
-%
-\begin{center}
-\small\alert{
-\texttt{to:\,\textbackslash{}"([A-Za-z ]+)\textbackslash{}",\,from:\,\textbackslash{}"([A-Za-z ]+)\textbackslash{}",\,content:\,\textbackslash{}"(.*?)\textbackslash{}"}}
-\end{center}
-%
-
-%
-\begin{center}
-\includegraphics[width=.7\linewidth]{./img/regex101.png}
-\end{center}
-
-\item \url{https://regex101.com} provides an interactive explaination of your regex (on the right side) 
-
-\item you can test your regex on the fly against any input string
-
-\end{itemize}  
 \end{frame}
 
 \subsection{Exercise 4-1} 
@@ -427,7 +445,7 @@ A valid implementation must satisfy the following constraints:
 	\item The \alert{unit tests} contained within the \alert{\texttt{TestTextualSpace}} class must be satisfied
 	%
 	\begin{itemize}
-		\item use them usage as examples
+		\item use them as usage examples
 	\end{itemize}
 	
 	\item The tuple space must work regardless of the particular Executor Service it is initialised with
@@ -501,12 +519,67 @@ A valid implementation must satisfy the following constraints:
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Implementing the \texttt{rd} primitite}
-	\lstinputlisting{./code/TextualSpace_read.java}
+\begin{frame}[allowframebreaks]{Implementing the \texttt{rd} primitive}
+	\lstinputlisting{./code/TextualSpace_rd.java}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Implementing the \texttt{in} primitite}
+\begin{frame}[allowframebreaks]{Implementing the \texttt{in} primitive}
 \lstinputlisting{./code/TextualSpace_in.java}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Implementing the \texttt{out} primitive}
+\lstinputlisting{./code/TextualSpace_out.java}
+\end{frame}
+
+\begin{frame}{Exercise 4-1: Go on by your self}
+\begin{itemize}
+	\item Try complete the implementation of \texttt{TextualSpace}
+	
+	\vfill
+	
+	\item There are two more utility primitives to be implemented in order for tests to work:
+	%
+	\begin{description}
+		\item[\texttt{get}] | reads \alert{all} the tuples currently contained within the tuple space 
+		\item[\texttt{getSize}] | reads \alert{how many} tuples are currently contained within the tuple space 
+	\end{description}
+
+	\vfill
+	
+	\item Their functioning is essentially self-contained
+	
+\end{itemize}
+\end{frame}
+
+\section{Agents}
+
+\subsection{Agents as Threads}
+
+\begin{frame}{About agents}
+\begin{itemize}
+	\item Notice the \texttt{sd.lab.linda.\alert{Agent}} class
+	
+	\vfill
+	
+	\item It is extensively employed in testing control-flow-related issues
+	%
+	\begin{itemize}
+		\item[eg] \linda{}'s primitives
+	\end{itemize}
+	
+	\vfill
+	
+	\item We will extend this as well in the future, but for the moment it is a simple as this
+	
+	\vfill
+	
+	\item It is as simple as a thread executing some \alert{cyclic} behaviour
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Agents as threads}
+\lstinputlisting{./code/Agent.java}
 \end{frame}
 
 %===============================================================================

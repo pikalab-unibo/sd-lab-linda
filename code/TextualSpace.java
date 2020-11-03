@@ -23,7 +23,7 @@ class TextualSpace
     // TODO: implement
   }
   
-  public CompletableFuture<Integer> getSize() {
+  public CompletableFuture<Integer> count() {
     // TODO: implement
   }
   

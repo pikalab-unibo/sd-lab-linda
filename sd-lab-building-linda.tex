@@ -1,26 +1,47 @@
+% !TeX spellcheck = en_GB
 %\documentclass[handout]{beamer}\mode<presentation>{\usetheme{AMSCesenaPurpleAndGold}}
 \documentclass[presentation]{beamer}\mode<presentation>{\usetheme{AMSCesenaPurpleAndGold}}
 %%%%
 
 \usepackage{sd-lab-building-linda}
-\usepackage{my-listings}
+%\usepackage{my-listings}
 \usepackage{forloop}
 
-\title[L3 -- Building \linda{}]{Building \linda{} from scratch}
+\newcommand{\bs}[1]{\textbackslash{}#1}
+\newcommand{\labN}{6}
+\newcommand{\labGroup}{https://gitlab.com/pika-lab/courses/ds/ay2021}
+\newcommand{\labRepo}{\labGroup/lab-\labN}
+
+\title[L\labN{} -- Building \linda{}]{L\labN{} -- Building \linda{} from scratch}
 %
-\subtitle[SD]
-{Distributed Systems / Hands-on\\\scriptsize Sistemi Distribuiti / Laboratorio}
+\subtitle[SD]{Distributed Systems / Technologies}
 %
 \author[Ciatto \and Omicini]
 {\emph{Giovanni Ciatto} \and Andrea Omicini\\
-	\texttt{giovanni.ciatto@unibo.it} \and \texttt{andrea.omicini@unibo.it}}
+	\texttt{giovanni.ciatto@unibo.it \and andrea.omicini@unibo.it}}
 %
 \institute[DISI, Univ. Bologna]
 {Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\\textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna a Cesena}
 %
-\date[A.Y. 2019/2020]{Academic Year 2019/2020}
+\date[A.Y. 2020/2021]{Academic Year 2020/2021}
 
 \setbeamercovered{transparent}
+
+\AtBeginSection{
+	\begin{frame}[c]\frametitle{Outline}
+		% 		\begin{multicols}{2}
+		\tableofcontents[sectionstyle=show/shaded, subsectionstyle=hide/hide, subsubsectionstyle=hide/hide]
+		% 		\end{multicols}
+	\end{frame}
+}
+
+\AtBeginSubsection{
+	\begin{frame}[c]\frametitle{Next in Line\ldots}
+		\begin{multicols}{2}
+			\tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/shaded, subsubsectionstyle=hide/hide]
+		\end{multicols}
+	\end{frame}
+}
 
 \begin{document}
 	
@@ -28,37 +49,77 @@
 \frame{\titlepage}
 %\\\\\\\\\\\\\\\\\\\\\
 
-\section{Wetting your appetite}
+\section{Motivation \& Goals}
 
 \begin{frame}
-\frametitle{Motivation \& Lecture Goals}
+\frametitle{Motivations}
 
 \begin{itemize}
-	\item Our path towards the creation of a \linda{}-based, agent-oriented, distributed framework steps through the creation of a basic, local \linda{} library
+	\item So far, we have mostly focused on the \emph{structural} and \emph{behavioural} dimensions of software engineering (SE)
 	
 	\vfill
 	
-	\item In this lecture we build such a local implementation
+	\item It is now time to explore the \emph{interactive} dimension
 	
 	\vfill
 	
-	\item We show how to \alert{design \& build} a \linda{} implementation for multi-threaded applications in Java
-	
+	\item Interaction among agents can be modelled in several ways
+	%
+	\begin{itemize}
+		\item and each model can be realised even more ways
+	\end{itemize}
+
 	\vfill
 	
-	\item In future lectures we will evolve such local, platform specific implementation towards a \alert{distributed} \&  \alert{platform-independent} one
+	\item Here we focus on the \alert{\linda{}} model, letting agents interact via \emph{tuple spaces}
+	%
+	\begin{itemize}
+		\item very impactful model from the CS literature
+		\item very central w.r.t. the field of Coordination
+		\item very simple, yet very \emph{expressive}
+		\item very didactic 
+	\end{itemize}
+
+	\vfill
+	
+	\item Later, more complex sorts of \emph{interaction patterns} will be built on top of \linda{}
+
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}
-\frametitle{Lab 4 Repository on GitLab}
+\subsection{About the practical activities}
 
+\begin{frame}
+	\frametitle{Lecture Goals}
+	
+	\begin{itemize}
+		
+		\item Familiarise with the \linda{} model in all its aspects
+		
+		\vfill
+		
+		\item Learn how to \alert{design \& build} a \linda{} implementation for multi-threaded applications in Java
+		
+		\vfill
+		
+		\item Learn how to derive an actual design our of an informal specification
+		
+		\vfill
+		
+		\item Learn how to recognise the many \emph{subtleties} of an informal specification
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lab \labN{} Repository on GitLab}
+	
 	\begin{itemize}
 		\item Examples and exercises described in this lecture are provided by means of the following GitLab repository:
 		%
 		\begin{center}
-			\url{https://gitlab.com/pika-lab/courses/ds/aa1920/lab-04}
+			\url{\labRepo}
 		\end{center}
 		
 		\vfill
@@ -74,15 +135,15 @@
 		\item Even if a minimal environment simply relying on a text editor + Gradle is sufficient for this lab, we kindly suggest to import the cloned repository into some IDE, e.g. IntelliJ Idea or Eclipse
 		%
 		%
-		\begin{itemize}
-		    \item in case of problems in importing the project on IntelliJ, try to downgrade the gradle wrapper
-		    %
-		    \item[\$] \texttt{./gradlew wrapper \alert{--gradle-version \textit{4.8.1}}}
-		\end{itemize}
+%		\begin{itemize}
+%		    \item in case of problems in importing the project on IntelliJ, try to downgrade the gradle wrapper
+%		    %
+%		    \item[\$] \texttt{./gradlew wrapper \alert{--gradle-version \textit{4.8.1}}}
+%		\end{itemize}
 		
 		\vfill
 		
-		\item In order to be able to submit your exercises, please ensure you requested access to the \href{https://gitlab.com/pika-lab/courses/ds/aa1920}{GitLab group of the course}
+		\item In order to be able to submit your exercises, please ensure you requested access to the \href{\labGroup}{GitLab group of the course}
 	\end{itemize}
 
 \end{frame}
@@ -95,8 +156,7 @@
 \frametitle{The \linda{} model}
 
 \begin{itemize}
-	\item<1-> The \linda{} model is built up of five main (sorts of) elements:
-	%
+	\item The \linda{} model is built up of five main (sorts of) elements:
 	%
 	\begin{description}
 		\item[Tuples] | structured information chunks (such as strings, records, dictionaries, or other kinds of \alert{data structures})
@@ -110,47 +170,31 @@
 		\item[Agents] (or ``Processes'', or ``Activities'') | pro-active entities which interact by writing, observing, or taking information from the tuple spaces
 		
 		\item[Primitives] | operations which can be performed by agents on tuple spaces, in order to manipulate or observe the information they contain
-		
 	\end{description}
-	
 \end{itemize}
-
 \end{frame}
 
 \subsection{Primitives} 
 
 \begin{frame}%[allowframebreaks]
 \frametitle{\linda{'s} primitives}
-
-\begin{itemize}
-\item The minimal set of \alert{primitives} according to the original \linda{'s} model comprehends the following ones:
-%
-
-%
-\begin{description}
-	\item[\texttt{out}] | let agents \alert{write} (or \alert{insert}) a tuple into a tuple space 
-	
-	
-	
-	\item[\texttt{rd}] (shortcut for \alert{read}) | let agents know if a tuple matching a particular template \alert{exists} on a tuple space. 
-	%
-	If it is the case, agents can also read the content of such a tuple
-	
-	
-	
-	\item[\texttt{in}] | let agents \alert{take} (or \alert{consume}) a tuple matching a particular template on a tuple space, if any
-\end{description}
-
-
-
-\item Other primitives will be considered in the future, but for the moment this is all we need
-
-
-
-\item Think about tuple spaces as \alert{collections}, about tuples as the the elements contained by such collections, and about primitives as the \alert{interface} of tuple spaces
-
-\end{itemize}
-
+	\begin{itemize}
+		\item The minimal set of \alert{primitives} according to the original \linda{'s} model comprehends the following ones:
+		%
+		\begin{description}
+			\item[\texttt{out}] | let agents \alert{write} (or \alert{insert}) a tuple into a tuple space 
+			
+			\item[\texttt{rd}] (shortcut for \alert{read}) | let agents know if a tuple matching a particular template \alert{exists} on a tuple space. 
+			%
+			If it is the case, agents can also read the content of such a tuple
+			
+			\item[\texttt{in}] | let agents \alert{take} (or \alert{consume}) a tuple matching a particular template on a tuple space, if any
+		\end{description}
+		
+		\item Other primitives will be considered in the future, but for the moment this is all we need
+		
+		\item Think about tuple spaces as \alert{collections}, about tuples as the the elements contained by such collections, and about primitives as the \alert{interface} of tuple spaces
+	\end{itemize}
 \end{frame}
 
 \subsection{The blackboard metaphor} 
@@ -158,14 +202,14 @@
 \begin{frame}
 \frametitle{The blackboard metaphor}
 
-\begin{enumerate}
-\item You can imagine a tuple space as a \alert{blackboard}
-%
-\begin{center}
-\includegraphics[width=\linewidth]{./img/blackboard.pdf}
-\end{center}
-%
-\end{enumerate}
+	\begin{enumerate}
+		\item You can imagine a tuple space as a \alert{blackboard}
+		%
+		\begin{center}
+			\includegraphics[width=\linewidth]{./img/blackboard.pdf}
+		\end{center}
+		%
+	\end{enumerate}
 
 \end{frame}
 
@@ -175,18 +219,18 @@
 \begin{frame}
 \frametitle{The blackboard metaphor}
 
-\begin{enumerate}\setcounter{enumi}{2}
-    \item where agents can \alert{\texttt{write}} any sort of information---[i.e.] \alert{tuples}
-    \begin{itemize}
-        \item according to some \alert{representation} format of choice 
-        \item through primitive \alert{\texttt{out}}
-    \end{itemize}
-%
-\begin{center}
-\includegraphics[width=\linewidth]{./img/write-\arabic{imagenumber}.pdf}
-\end{center}
-%
-\end{enumerate}
+	\begin{enumerate}\setcounter{enumi}{2}
+	    \item where agents can \alert{\texttt{write}} any sort of information---[i.e.] \alert{tuples}
+	    \begin{itemize}
+	        \item according to some \alert{representation} format of choice 
+	        \item through primitive \alert{\texttt{out}}
+	    \end{itemize}
+		%
+		\begin{center}
+			\includegraphics[width=\linewidth]{./img/write-\arabic{imagenumber}.pdf}
+		\end{center}
+		%
+	\end{enumerate}
 
 \end{frame}
 }
@@ -195,19 +239,19 @@
 \begin{frame}
 \frametitle{The blackboard metaphor}
 
-\begin{enumerate}\setcounter{enumi}{3}
-
-\item where agents can \alert{\texttt{read}} all information matching a particular \alert{template}
-    \begin{itemize}
-        \item according to some \alert{query} language of choice 
-        \item through primitive \alert{\texttt{rd}}
-    \end{itemize}
-%
-\begin{center}
-\includegraphics[width=\linewidth]{./img/read-\arabic{imagenumber}.pdf}
-\end{center}
-%
-\end{enumerate}
+	\begin{enumerate}\setcounter{enumi}{3}
+	
+	\item where agents can \alert{\texttt{read}} all information matching a particular \alert{template}
+	\begin{itemize}
+		\item according to some \alert{query} language of choice 
+		\item through primitive \alert{\texttt{rd}}
+	\end{itemize}
+	%
+	\begin{center}
+		\includegraphics[width=\linewidth]{./img/read-\arabic{imagenumber}.pdf}
+	\end{center}
+	%
+	\end{enumerate}
 \end{frame}
 }
 
@@ -215,18 +259,18 @@
 \begin{frame}
 \frametitle{The blackboard metaphor}
 
-\begin{enumerate}\setcounter{enumi}{4}
-
-\item or \alert{\texttt{take}} it, making it unaccessible for other agents
-%
-\begin{itemize}
-    \item through primitive \alert{\texttt{in}}
-\end{itemize}
-%
-\begin{center}
-\includegraphics[width=\linewidth]{./img/take-\arabic{imagenumber}.pdf}
-\end{center}
-\end{enumerate}
+	\begin{enumerate}\setcounter{enumi}{4}
+	
+		\item or \alert{\texttt{take}} it, making it unaccessible for other agents
+		%
+		\begin{itemize}
+		    \item through primitive \alert{\texttt{in}}
+		\end{itemize}
+		%
+		\begin{center}
+			\includegraphics[width=\linewidth]{./img/take-\arabic{imagenumber}.pdf}
+		\end{center}
+	\end{enumerate}
 \end{frame}
 }
 
@@ -235,210 +279,384 @@
 \begin{frame}%[allowframebreaks]
 \frametitle{(Semi-)Formal notation}
 
-In what follows, we will use the following notation:
-%
-\vfill
-%
-\begin{itemize}
-\item Tuples are enumerated by \alert{$t$}, or $t_i$, so, for instance, $t_1 \neq t_2$, but $t_0 = t_0$
-
-\item Templates are enumerated by \alert{$\bar{t}$}, or $\bar{t}_i$. Notice that templates are a compact way to represent \alert{sets} of tuples
-
-\item Matching is written as \alert{$t \in \bar{t}$}, i.e., tuple $t$ matches template $\bar{t}$
-%
-\begin{itemize}
-\item unless stated otherwise, we implicitly assume the following notation: tuple $t$ matches template $\bar{t}$, tuple $t_1$ matches template $\bar{t_2}$, tuple $t_i$ matches template $\bar{t_i}$, and so on \ldots
-\end{itemize}
-
-\item Tuple Spaces are enumerated by \alert{$TS$}, or $TS_j$
-
-\item Agents are enumerated by \alert{$A$}, or $A_k$
-\end{itemize}
+	In what follows, we will use the following notation:
+	%
+	\vfill
+	%
+	\begin{itemize}
+		\item Tuples are enumerated by \alert{$t$}, or $t_i$, so, r.g., $t_1 \neq t_2$, but $t_0 = t_0$
+		%
+		\begin{itemize}
+			\item whereas $\mathbf{t}^*$ denotes a vector of tuples
+		\end{itemize}
+		
+		\vfill
+		
+		\item Templates are enumerated by \alert{$\bar{t}$}, or $\bar{t}_i$. Notice that templates are a compact way to represent \alert{sets} of tuples
+		%
+		\begin{itemize}
+			\item whereas $\bar{\mathbf{t}}^*$ denotes a vector of templates
+		\end{itemize}
+		
+		\vfill
+		
+		\item Matching is written as \alert{$t \in \bar{t}$}, i.e., tuple $t$ matches template $\bar{t}$
+		%
+		\begin{itemize}
+			\item unless stated otherwise, we implicitly assume the following notation: tuple $t$ matches template $\bar{t}$, tuple $t_1$ matches template $\bar{t_2}$, tuple $t_i$ matches template $\bar{t_i}$, and so on \ldots
+		\end{itemize}
+		
+		\vfill
+		
+		\item Tuple Spaces are enumerated by \alert{$TS$}, or $TS_j$
+		
+		\vfill
+		
+		\item Agents are enumerated by \alert{$A$}, or $A_k$
+	\end{itemize}
 
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{\linda{'s} semantics}
 \label{linda-semantics}
-
-\begin{description}
-\item[Generative] | after an agent $A$ performs a \texttt{out($t$)} operation on some tuple space $TS$, tuple $t$ \alert{exists} regardless of $A$. 
-%
-If agent $A$ terminates, crashes, or disconnects, $t$ will keep existing on $TS$
-
-\item[Associative] | tuples are \alert{accessed} (read or taken) in an associative way: instead of using a name, or an address, agents can specify \alert{templates} in order to access tuples
-
-\item[Suspensive] | whenever an agent $A$ invokes the \texttt{rd($\bar{t}$)} or \texttt{in($\bar{t}$)} over a particular template $\bar{t}$, on a particular tuple space $TS$, if not tuple $t$ matching $\bar{t}$ exists on $TS$, the operation is \alert{suspended} until $t$ is inserted into $TS$ by some agent performing a \texttt{out($t$)} operation
-
-\item[Non-deterministic] | whenever an agent $A$ invokes the \texttt{rd($\bar{t}$)} or \texttt{in($\bar{t}$)} operation, if more than one tuple $t$, $t'$, $t''$ exist matching  $\bar{t}$, one is read or taken  \alert{non-deterministically}
-
-\end{description}
+	
+	\begin{description}
+		\item[Generative] | after an agent $A$ performs a \texttt{out($t$)} operation on some tuple space $TS$, tuple $t$ \alert{exists} regardless of $A$. 
+		%
+		If agent $A$ terminates, crashes, or disconnects, $t$ will keep existing on $TS$
+		
+		\item[Associative] | tuples are \alert{accessed} (read or taken) in an associative way: instead of using a name, or an address, agents can specify \alert{templates} in order to access tuples
+		
+		\item[Suspensive] | whenever an agent $A$ invokes the \texttt{rd($\bar{t}$)} or \texttt{in($\bar{t}$)} over a particular template $\bar{t}$, on a particular tuple space $TS$, if not tuple $t$ matching $\bar{t}$ exists on $TS$, the operation is \alert{suspended} until $t$ is inserted into $TS$ by some agent performing a \texttt{out($t$)} operation
+		
+		\item[Non-deterministic] | whenever an agent $A$ invokes the \texttt{rd($\bar{t}$)} or \texttt{in($\bar{t}$)} operation, if more than one tuple $t$, $t'$, $t''$ exist matching  $\bar{t}$, one is read or taken  \alert{non-deterministically}
+	
+	\end{description}
 
 \end{frame}
 
 
-\section{Implementing \linda{} in Java}
+\section{\linda{} in Java}
 
-\subsection{Design} 
+\subsection{Abstract Design}
 
 \begin{frame}%[allowframebreaks]
-\frametitle{\linda{} as a Java interface}
-
-\begin{itemize}
-	\item A TS can be easily conceived as an \alert{object} in the OOP sense
+	\frametitle{Communication vs. Coordination language}
+	
+	An actual designing of \linda{} involves the specification of two major aspects:
 	
 	\vfill
 	
-	\item which is generic in the type of tuples (i.e. \texttt{\alert{T}}) and templates (i.e. \texttt{\alert{TT}})
-	
+	\begin{block}{The \textbf{communication} language}
+		\begin{itemize}
+			\item dictating how \emph{tuples} and \emph{templates} are represented
+			\item as well as \emph{matches} are computed among them
+		\end{itemize}
+	\end{block}
+
 	\vfill
 	
-	\item where primitives return \alert{\texttt{CompletableFuture}s} to deal with suspension \& latency
-\end{itemize}
+	\begin{block}{The \textbf{coordination} language}
+		\begin{itemize}
+			\item dictating which and how many \emph{primitives} are available for agents
+		\end{itemize}
+	\end{block}
 
-\vfill
-
-\lstinputlisting{./code/TupleSpace.java}
 \end{frame}
 
-\subsection{Tuples \& Templates interfaces} 
+\begin{frame}%[allowframebreaks]
+	\frametitle{Communication language}
+	
+	To define a communication language, one should have an answer to the following questions:
+	%
+	\vfill
+	%
+	\begin{itemize}
+		\item which sorts of \emph{information} should agents be able to manipulate?
+		%
+		\begin{itemize}
+			\item[eg] numbers? vectors? text? objects? graphs? etc.
+		\end{itemize}
+	
+		\vfill
+		
+		\item which sorts of \emph{data representation} formats should \linda{} support?
+		%
+		\begin{itemize}
+			\item[eg] doubles? arrays? strings? XML? JSON? etc.
+		\end{itemize}
+	
+		\vfill
+		
+		\item which \emph{information retrieval mechanism} is more adequate for the chosen format?
+		%
+		\begin{itemize}
+			\item[eg] pattern matching? SQL? regular expressions? JSON Path? XPath?
+		\end{itemize}
+	
+		\vfill
+		
+		\item how should \emph{templates} be represented to support the chosen format?
+		
+		\vfill
+		
+		\item given a tuple-template couple, how should \emph{a match} be computed?
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+	\frametitle{Coordination language}
+	
+	The \linda{} coordination language is composed by the \emph{canonical} primitives.
+	%
+	Yet, other primitives may be added to make the model more \emph{practical}\footnote{``more practical'' does not mean ``more expressive''}:
+	%
+	\vfill
+	%
+	\begin{description}
+		
+		\item[utility] primitives (e.g. \alert{\texttt{set($\bar{\mathtt{t}}^*$)}}, \alert{\texttt{get()}}, \alert{\texttt{count()}}), while let agents overwrite, read, or count the whole content of a TS
+		
+		\vfill
+		
+		\item[predicative] primitives (e.g. \alert{\texttt{inp($\bar t$)}} and \alert{\texttt{inp($\bar t$)}}), which work as their canonical counterparts (i.e., \texttt{in($\bar t$)} and \texttt{rd($\bar t$)}) except they fail instead of suspending if no tuple matching $\bar t$ exists
+		
+		\vfill
+		
+		\item[negated] primitives (e.g. \alert{\texttt{no($\bar t$)}} and \alert{\texttt{nop($\bar t$)}}), which check if no tuple matching $\bar t$ exists, either suspending or failing in case at least a \emph{counterexample} exist
+		
+		\vfill
+		
+		\item[bulk] primitives (e.g. \alert{\texttt{out\_all($\bar{\mathtt{t}}^*$)}}, \alert{\texttt{in\_all($\bar t$)}}, and \alert{\texttt{rd\_all($\bar t$)}}) which let agents insert, consume, or read multiple tuples at a time
+	\end{description}
+
+	\vfill
+	
+\end{frame}
+
+\subsection{Concrete Design}
+	
+\begin{frame}%[allowframebreaks]
+	\frametitle{\linda{} as a Java interface}
+	
+	\begin{itemize}
+		\item A TS can be easily conceived as an \alert{object} in the OOP sense
+		
+		\vfill
+		
+		\item which is generic in the type of tuples (i.e. \texttt{\alert{T}}) and templates (i.e. \texttt{\alert{TT}})
+		
+		\vfill
+		
+		\item where primitives return \alert{\texttt{CompletableFuture}s} to deal with suspension \& latency
+	\end{itemize}
+	
+	\vfill
+	
+	\lstinputlisting[language=Java]{./code/TupleSpace.java}
+\end{frame}
 
 \begin{frame}%[allowframebreaks]
 \frametitle{Where \texttt{Tuple}s and and \texttt{Template}s are simply:}
 
-\columnsHH{
-\lstinputlisting{./code/Tuple.java}
-}{
-\lstinputlisting{./code/Template.java}
-}
-
-\begin{itemize}
-\item Tuples may be potentially anything
-%
-\begin{itemize}
-	\item[eg] strings, objects, JSON files, XML files, logic terms, \ldots
-\end{itemize}
-
-\item Templates may be anything able to match a tuple, somehow
-%
-\begin{itemize}
-	\item[eg] regular expressions, SQL, JsonPath, XPath, logic terms, \ldots
-\end{itemize}
-\end{itemize}
-
-\vfill
-
-\begin{block}{When designing some \linda{} implementation, you must decide}
+	\columsHH{
+		\lstinputlisting[language=Java]{./code/Tuple.java}
+	}{
+		\lstinputlisting[language=Java]{./code/Template.java}
+	}
+	
 	\begin{itemize}
-		\item How to represent data (i.e. \alert{tuples})
-		\item How to represent queries (i.e. \alert{templates})
-		\item Which is the desired semantics for queries (i.e. the \alert{matching} mechanism)
+		\item Tuples may be potentially anything
+		%
+		\begin{itemize}
+			\item[eg] strings, objects, JSON files, XML files, logic terms, \ldots
+		\end{itemize}
+		
+		\item Templates may be anything able to match a tuple, somehow
+		%
+		\begin{itemize}
+			\item[eg] regular expressions, SQL, JsonPath, XPath, logic terms, \ldots
+		\end{itemize}
 	\end{itemize}
-\end{block}
+	
+	\vfill
+	
+	\begin{block}{When designing some \linda{} implementation, you must decide}
+		\begin{itemize}
+			\item How to represent data (i.e. \alert{tuples})
+			\item How to represent queries (i.e. \alert{templates})
+			\item Which is the desired semantics for queries (i.e. the \alert{matching} mechanism)
+		\end{itemize}
+	\end{block}
 
 \end{frame}
 
-\subsection{Text-based Tuple Spaces in Java}
+\subsection{Textual Tuple Spaces in Java}
 
 \begin{frame}%[allowframebreaks]
-\frametitle{Text-based Tuple Spaces in Java, idea}
+\frametitle{Textual Tuple Spaces in Java -- Proof of Concept}
 
-We will implement the \texttt{TupleSpace} interface by means of the \texttt{\alert{Textual}Space} class, where:
-%
-\vfill
-%
-\begin{itemize}	
-\item Strings are used as tuples, meaning that the \texttt{\alert{String}} class is used to reify tuples
-%
-\begin{itemize}
-\item[i.e.] \texttt{T $\rightarrow$ java.lang.\alert{String}}
-\end{itemize}
-
-\vfill
-
-\item Regular Expressions (regex) are used as templates, meaning that the \texttt{\alert{Pattern}} class is used to reify templates
-%
-\begin{itemize}
-\item[i.e.] \texttt{TT $\rightarrow$ java.util.regex.\alert{Pattern}}
-\end{itemize}
-
-\vfill
-
-\item The matching consists of \alert{deciding} whether a string matches a regex
-
-\vfill
-
-\item[!] If you are not practical with regex, you can acquire some experience or simply test your patterns with \url{https://regex101.com}
-\end{itemize}
-
-\end{frame}
-
-\newcommand{\bs}[1]{\textbackslash{}#1}
-
-\begin{frame}
-\frametitle{\href{https://regex101.com/}{Regex101.com} -- Example}
-
-\begin{itemize}
-	\item Could you say what's the meaning of the following regex?
+	We will implement the \texttt{TupleSpace} interface by means of the \texttt{\alert{Textual}Space} class, where:
 	%
-	\begin{center}
-		\small\alert{
-			\texttt{\bs{s}*to\bs{s}*:\bs{s}*"([A-Za-z ]+)",\bs{s}*from\bs{s}*:\bs{s}*"([A-Za-z ]+)"\bs{s}*}}
-	\end{center}
+	\vfill
 	%
-	
+	\begin{itemize}	
+		\item Strings are used as tuples, meaning that the \texttt{\alert{String}} class is used to reify tuples
 	%
-	\begin{center}
-		\includegraphics[width=.7\linewidth]{./img/regex101.png}
-	\end{center}
+	\begin{itemize}
+		\item[i.e.] \texttt{T $\rightarrow$ java.lang.\alert{String}}
+	\end{itemize}
 	
-	\item \url{https://regex101.com/r/2eU8aO/2} provides an interactive explanation of the regex above (on the right side) 
+	\vfill
 	
-	\item you can test your regex on the fly against any input string
-	
-\end{itemize}  
+	\item Regular Expressions (regex) are used as templates, meaning that the \texttt{\alert{Pattern}} class is used to reify templates
+	%
+	\begin{itemize}
+		\item[i.e.] \texttt{TT $\rightarrow$ java.util.regex.\alert{Pattern}}
+		\end{itemize}
+		
+		\vfill
+		
+		\item The matching consists of \alert{deciding} whether a string matches a regex
+		
+		\vfill
+		
+		\item[!] If you are not practical with regex, you can acquire some experience or simply test your patterns with \url{https://regex101.com}
+	\end{itemize}
+
 \end{frame}
 
 \begin{frame}
 \frametitle{String as Tuples}
 
-\lstinputlisting{./code/StringTuple.java}
-%
+	\texttt{StringTuple} is just a \emph{wrapper} type for Java's \texttt{String}s:
+	%
+	\lstinputlisting[language=Java]{./code/StringTuple.java}
+
 \end{frame}
 
 \begin{frame}
 \frametitle{Regex as Templates}
 
-\lstinputlisting{./code/RegexTemplate.java}
+	\texttt{RegexTuple} is just an \emph{adapter}\footnote{\url{https://en.wikipedia.org/wiki/Adapter_pattern}} type for Java's \texttt{Pattern}s:
+	%
+	\lstinputlisting[language=Java]{./code/RegexTemplate.java}
 
 \end{frame}
 
-\subsection{Exercise 4-1} 
+\begin{frame}
+	\frametitle{\href{https://regex101.com/}{Regex101.com} -- Example}
+	
+	\begin{itemize}
+		\item Could you say what's the meaning of the following regex?
+		%
+		\begin{center}\small
+			\alert{\texttt{\bs{s}*to\bs{s}*:\bs{s}*"([A-Za-z ]+)",\bs{s}*from\bs{s}*:\bs{s}*"([A-Za-z ]+)"\bs{s}*}}
+		\end{center}
+		%
+		\begin{center}
+			\includegraphics[width=.7\linewidth]{./img/regex101.png}
+		\end{center}
+		
+		\item \url{https://regex101.com/r/2eU8aO/2} provides an interactive explanation of the regex above (on the right side) 
+		%
+		\begin{itemize}
+			\item you can test your regex on the fly against any input string
+			\item consider inspecting the documentation of \href{https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/util/regex/Pattern.html}{\texttt{java.util.regex.\alert{Pattern}}}
+		\end{itemize}		
+		
+	\end{itemize}  
+\end{frame}
+
+\section{Lab Activity}
+
+\startExercise
+
+\subsection{Particular Communication Languages} 
 
 \begin{frame}[allowframebreaks]
-\frametitle{Exercise 4-1: Text-based Tuple Spaces in Java}
+	\frametitle{Exercise \currentExercise{} -- Particular Communication Languages}
+	
+	Use \href{https://regex101.com/}{Regex101.com} to practice with regex-based templates:
+	
+	\begin{block}{Service descriptors}
+		\begin{itemize}
+			\item Imagine strings represent \alert{service descriptors} in the form:
+			%
+			\begin{center}\ttfamily\small
+				OutputType ServiceName ( InputType$_1$ , InputType$_2$ , $\ldots$ )
+			\end{center}
+		
+			\item Define a regex for all service descriptors that:
+			%
+			\begin{enumerate}
+				\item return an \texttt{int}
+				\item accept a \texttt{long} as first input argument
+				\item return a \texttt{double}, are named \texttt{sum}, and accept an arbitrary amount of \texttt{double}s as input
+			\end{enumerate}
+		\end{itemize}
+	\end{block}
+	
+	\begin{block}{Messages}
+		\begin{itemize}
+			\item Imagine strings represent \alert{messages} in the form:
+			%
+			\begin{center}\ttfamily\small
+				from: "Sender", to: "Receiver", content: "Payload"
+			\end{center}
+			
+			\item Define a regex for all messages that:
+			%
+			\begin{enumerate}
+				\item are directed towards \texttt{alice}
+				\item have been sent by \texttt{bob}
+				\item carry a payload which is either \texttt{ping} or \texttt{pong}
+			\end{enumerate}
+		\end{itemize}
+	\end{block}
+
+\end{frame}
+
+\startExercise
+
+\subsection{Text-based Tuple Spaces in Java} 
+
+\begin{frame}[allowframebreaks]
+\frametitle{Exercise \currentExercise{} -- Textual Tuple Spaces in Java}
 
 \begin{enumerate}
-	\item Clone the initial source code from \url{https://gitlab.com/pika-lab/courses/ds/aa1920/lab-4}
+	\item Clone the initial source code from \url{\labRepo}
+	
+	\medskip
 	
 	\item Import the project into your favourite IDE as a Gradle project
 	
-	\item Inspect the project and try to figure out the purpose of the provided code
+	\medskip
 	
-	\item Notice that the project's \texttt{build.gradle} file comes with some dependencies.
+	\item Inspect the provided code and try to figure out its purpose
+	
+	\medskip
+	
+	\item Notice that the project's \texttt{build.gradle.kts} file comes with some dependencies.
 	%
 	Try to figure out what they are and what's their purpose
+	
+	\medskip
 	
 	\item Notice that the project comes equipped with some tests. 
 	%
 	Read them and try to understand them
 \end{enumerate}
 
-\lstinputlisting{./code/TextualSpace.java}
+\lstinputlisting[language=Java]{./code/TextualSpace.java}
 
 \framebreak
 
 A valid implementation must satisfy the following constraints:
+%
+\bigskip
 %
 \begin{itemize}
 	
@@ -447,12 +665,16 @@ A valid implementation must satisfy the following constraints:
 	\begin{itemize}
 		\item use them as usage examples
 	\end{itemize}
+
+	\bigskip
 	
 	\item The tuple space must work regardless of the particular Executor Service it is initialised with
 	
+	\bigskip
+	
 	\item The provided implementation must adhere to the \alert{\linda{} semantics} described on slide \ref{linda-semantics}
 	
-	\vspace{.3 cm}
+	\bigskip
 	
 	\item[!] If you feel confident with these concepts you can start your exercise now. 
 	%
@@ -495,23 +717,27 @@ A valid implementation must satisfy the following constraints:
 	
 	\vfill
 	
-	\item Have a look to the \href{https://gitlab.com/pika-lab/courses/ds/aa1920/lab-04/blob/master/src/main/java/sd/lab/linda/textual/impl/PendingRequest.java}{\texttt{sd.lab.linda.textual.impl.\alert{PendingRequest}}} class for more details
+	\item Have a look to the \texttt{sd.lab.linda.textual.impl.\alert{PendingRequest}} class for more details
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}
 
-\begin{center}
-	\includegraphics[width=\linewidth]{./img/out-design.pdf}
-\end{center}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{./img/out-design.pdf}
+	\end{center}
+	%	
+	\begin{itemize}
+		\item[!] when should the \texttt{out}'s \texttt{CompletableFuture} completed? why?
+	\end{itemize}
 
 \end{frame}
 
 \begin{frame}
 \frametitle{General structure for primitives implementation}
 
-\lstinputlisting{./code/GeneralPrimitiveImplementation.java}
+\lstinputlisting[language=Java]{./code/GeneralPrimitiveImplementation.java}
 
 \begin{itemize}
 	\item[?] what's the purpose of the \texttt{\alert{synchronized}} keyword?
@@ -519,19 +745,19 @@ A valid implementation must satisfy the following constraints:
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Implementing the \texttt{rd} primitive}
-	\lstinputlisting{./code/TextualSpace_rd.java}
-\end{frame}
+%\begin{frame}[allowframebreaks]{Implementing the \texttt{rd} primitive}
+%	\lstinputlisting[language=Java]{./code/TextualSpace_rd.java}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Implementing the \texttt{in} primitive}
+%\lstinputlisting[language=Java]{./code/TextualSpace_in.java}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Implementing the \texttt{out} primitive}
+%\lstinputlisting[language=Java]{./code/TextualSpace_out.java}
+%\end{frame}
 
-\begin{frame}[allowframebreaks]{Implementing the \texttt{in} primitive}
-\lstinputlisting{./code/TextualSpace_in.java}
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Implementing the \texttt{out} primitive}
-\lstinputlisting{./code/TextualSpace_out.java}
-\end{frame}
-
-\begin{frame}{Exercise 4-1: Go on by your self}
+\begin{frame}{Exercise \currentExercise{} -- Go on by your self}
 \begin{itemize}
 	\item Try complete the implementation of \texttt{TextualSpace}
 	
@@ -541,19 +767,17 @@ A valid implementation must satisfy the following constraints:
 	%
 	\begin{description}
 		\item[\texttt{get}] | reads \alert{all} the tuples currently contained within the tuple space 
-		\item[\texttt{getSize}] | reads \alert{how many} tuples are currently contained within the tuple space 
+		\item[\texttt{count}] | reads \alert{how many} tuples are currently contained within the tuple space 
 	\end{description}
-
-	\vfill
-	
-	\item Their functioning is essentially self-contained
+	%
+	Their functioning is essentially self-contained
 	
 \end{itemize}
 \end{frame}
 
 \subsubsection{Some Question}
 
-\begin{frame}{Exercise 4-1: Check your understanding}
+\begin{frame}{Exercise \currentExercise{} -- Check your understanding}
 Once you are done with the exercise, try to answer on the following questions (possibly, on the forum):
 %
 \vfill
@@ -577,35 +801,113 @@ Once you are done with the exercise, try to answer on the following questions (p
 \end{frame}
 
 
-\section{Agents}
+%\section{Agents}
+%
+%\subsection{Agents as Threads}
+%
+%\begin{frame}{About agents}
+%\begin{itemize}
+%	\item Notice the \texttt{sd.lab.linda.\alert{Agent}} class
+%	
+%	\vfill
+%	
+%	\item It is extensively employed in testing control-flow-related issues
+%	%
+%	\begin{itemize}
+%		\item[eg] \linda{}'s primitives
+%	\end{itemize}
+%	
+%	\vfill
+%	
+%	\item We will extend this as well in the future, but for the moment it is a simple as this
+%	
+%	\vfill
+%	
+%	\item It is as simple as a thread executing some \alert{cyclic} behaviour
+%	
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]{Agents as threads}
+%\lstinputlisting[language=Java]{./code/Agent.java}
+%\end{frame}
 
-\subsection{Agents as Threads}
+\startExercise
 
-\begin{frame}{About agents}
-\begin{itemize}
-	\item Notice the \texttt{sd.lab.linda.\alert{Agent}} class
+\subsection{Predicative Primitives (Advanced)} 
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Exercise \currentExercise{} -- Predicative Primitives (Optional)}
 	
-	\vfill
+	\begin{alertblock}{This is an \textbf{advanced} exercise}
+		\begin{itemize}
+			\item feel free to skip it
+			\item try it if you are curious about making TS more practical
+		\end{itemize}
+	\end{alertblock}
 	
-	\item It is extensively employed in testing control-flow-related issues
+	\bigskip
+	
+	Activity:
 	%
-	\begin{itemize}
-		\item[eg] \linda{}'s primitives
-	\end{itemize}
+	\medskip
+	%
+	\begin{enumerate}
+		\item extend the \texttt{TupleSpace} interface with \alert{predicative} primitives
+		%
+		\begin{itemize}
+			\item i.e. add the methods \texttt{inp} and \texttt{rdp}
+		\end{itemize}
 	
-	\vfill
+		\medskip
+		
+		\item implement these primitives in \texttt{TextualSpace}
+		
+		\medskip
+		
+		\item extend the suite \texttt{TestTextualSpace} to test the new primitives
+		
+	\end{enumerate}
 	
-	\item We will extend this as well in the future, but for the moment it is a simple as this
-	
-	\vfill
-	
-	\item It is as simple as a thread executing some \alert{cyclic} behaviour
-	
-\end{itemize}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Agents as threads}
-\lstinputlisting{./code/Agent.java}
+\startExercise
+
+\subsection{Negated Primitives (Advanced)} 
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Exercise \currentExercise{} -- Negated Primitives (Optional)}
+	
+	\begin{alertblock}{This is an \textbf{advanced} exercise}
+		\begin{itemize}
+			\item feel free to skip it
+			\item try it if you are curious about how advanced primitives work
+		\end{itemize}
+	\end{alertblock}
+	
+	\bigskip
+	
+	Activity:
+	%
+	\medskip
+	%
+	\begin{enumerate}
+		\item extend the \texttt{TupleSpace} interface with \alert{negated} primitives
+		%
+		\begin{itemize}
+			\item i.e. add the methods \texttt{no} and \texttt{nop}
+		\end{itemize}
+		
+		\medskip
+		
+		\item implement these primitives in \texttt{TextualSpace}
+		
+		\medskip
+		
+		\item extend the suite \texttt{TestTextualSpace} to test the new primitives
+		
+	\end{enumerate}
+	
 \end{frame}
 
 %===============================================================================

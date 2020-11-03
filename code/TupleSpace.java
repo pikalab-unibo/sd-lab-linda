@@ -5,9 +5,9 @@ interface TupleSpace<T extends Tuple, TT extends Template> {
   CompletableFuture<T> out(T tuple);
  
   CompletableFuture<MultiSet<? extends T>> get(); // Utility prim.
-//                  ^^^^^^^^ collection type provided by Apache
+  //                ^^^^^^^^ collection type provided by Apache
 
-  CompletableFuture<Integer> getSize();           // Utility prim.
+  CompletableFuture<Integer> count(); // Utility primitive
   
-  String getName();   // To discriminate among several tuple spaces
+  String getName(); // To discriminate among several tuple spaces
 }

@@ -9,17 +9,17 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    contentScriptType="application/ecmascript"
    contentStyleType="text/css"
-   height="494.62595"
+   height="482.89618"
    preserveAspectRatio="none"
    version="1.1"
-   viewBox="0 0 751 494.62595"
-   width="751"
+   viewBox="0 0 736 482.89618"
+   width="736"
    zoomAndPan="magnify"
-   id="svg207"
+   id="svg197"
    sodipodi:docname="out-design.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
-     id="metadata211">
+     id="metadata201">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -40,27 +40,28 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     id="namedview209"
+     inkscape:window-height="1084"
+     id="namedview199"
      showgrid="false"
-     inkscape:snap-grids="true"
      inkscape:snap-page="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="1.135219"
-     inkscape:cx="470.99426"
-     inkscape:cy="216.73112"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:zoom="1.1814315"
+     inkscape:cx="431.86349"
+     inkscape:cy="127.18538"
+     inkscape:window-x="1280"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg207" />
+     inkscape:current-layer="svg197" />
   <defs
      id="defs11">
     <filter
        height="3"
-       id="f1jy2p2jl79jiy"
+       id="f1ifo8v3novs2y"
        width="3"
        x="-1"
        y="-1">
@@ -87,735 +88,582 @@
          id="feBlend8" />
     </filter>
   </defs>
-  <g
-     id="g205">
-    <text
-       font-size="14"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="106"
-       x="267"
-       y="22.9951"
-       id="text13"
-       style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000">Design of the</text>
-    <text
-       font-size="14"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="24"
-       x="378"
-       y="24.9046"
-       id="text15"
-       style="font-weight:bold;font-size:14px;font-family:monospace;fill:#000000">out</text>
-    <text
-       font-size="14"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="68"
-       x="407"
-       y="22.9951"
-       id="text17"
-       style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000">primitive</text>
-    <rect
-       height="148.66409"
-       style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       width="493"
-       x="236"
-       y="306.25781"
-       id="rect19" />
-    <rect
-       height="59.265598"
-       style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       width="430"
-       x="246"
-       y="388.65631"
-       id="rect21" />
-    <line
-       style="stroke:#a80036;stroke-width:1;stroke-dasharray:5, 5"
-       x1="31"
-       x2="31"
-       y1="116.5938"
-       y2="501.05469"
-       id="line23" />
-    <line
-       style="stroke:#a80036;stroke-width:1;stroke-dasharray:5, 5"
-       x1="141"
-       x2="141"
-       y1="116.5938"
-       y2="501.05469"
-       id="line25" />
-    <line
-       style="stroke:#a80036;stroke-width:1;stroke-dasharray:5, 5"
-       x1="300"
-       x2="300"
-       y1="116.5938"
-       y2="501.05469"
-       id="line27" />
-    <line
-       style="stroke:#a80036;stroke-width:1;stroke-dasharray:5, 5"
-       x1="519.5"
-       x2="519.5"
-       y1="116.5938"
-       y2="501.05469"
-       id="line29" />
-    <text
-       font-size="14"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="41"
-       x="8"
-       y="113.292"
-       id="text31"
-       style="font-size:14px;font-family:sans-serif;fill:#000000">Agent</text>
-    <circle
-       cx="31.5"
-       cy="43.296902"
-       style="fill:#fefece;stroke:#a80036;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       id="ellipse33"
-       r="8" />
-    <path
-       d="m 31.5,51.2969 v 27 m -13,-19 h 26 m -13,19 -13,15 m 13,-15 13,15"
-       style="fill:none;stroke:#a80036;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       id="path35"
-       inkscape:connector-curvature="0" />
-    <text
-       font-size="14"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="41"
-       x="8"
-       y="513.0498"
-       id="text37"
-       style="font-size:14px;font-family:sans-serif;fill:#000000">Agent</text>
-    <circle
-       cx="31.5"
-       cy="526.35162"
-       style="fill:#fefece;stroke:#a80036;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       id="ellipse39"
-       r="8" />
-    <path
-       d="m 31.5,534.3516 v 27 m -13,-19 h 26 m -13,19 -13,15 m 13,-15 13,15"
-       style="fill:none;stroke:#a80036;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       id="path41"
-       inkscape:connector-curvature="0" />
-    <path
-       d="m 70,90.2969 h 142 c 5,0 5,13.1484 5,13.1484 0,0 0,13.1485 -5,13.1485 H 70 c -5,0 -5,-13.1485 -5,-13.1485 0,0 0,-13.1484 5,-13.1484"
-       style="fill:#fefece;stroke:#a80036;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       id="path43"
-       inkscape:connector-curvature="0" />
-    <path
-       d="m 212,90.2969 c -5,0 -5,13.1484 -5,13.1484 0,13.1485 5,13.1485 5,13.1485"
-       style="fill:none;stroke:#a80036;stroke-width:2"
-       id="path45"
-       inkscape:connector-curvature="0" />
-    <text
-       font-size="14"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="132"
-       x="70"
-       y="108.292"
-       id="text47"
-       style="font-size:14px;font-family:sans-serif;fill:#000000">CompletableFuture</text>
-    <path
-       d="m 70,500.0547 h 142 c 5,0 5,13.1484 5,13.1484 0,0 0,13.1485 -5,13.1485 H 70 c -5,0 -5,-13.1485 -5,-13.1485 0,0 0,-13.1484 5,-13.1484"
-       style="fill:#fefece;stroke:#a80036;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       id="path49"
-       inkscape:connector-curvature="0" />
-    <path
-       d="m 212,500.0547 c -5,0 -5,13.1484 -5,13.1484 0,13.1485 5,13.1485 5,13.1485"
-       style="fill:none;stroke:#a80036;stroke-width:2"
-       id="path51"
-       inkscape:connector-curvature="0" />
-    <text
-       font-size="14"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="132"
-       x="70"
-       y="518.0498"
-       id="text53"
-       style="font-size:14px;font-family:sans-serif;fill:#000000">CompletableFuture</text>
-    <text
-       font-size="14"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="82"
-       x="256"
-       y="113.292"
-       id="text55"
-       style="font-size:14px;font-family:sans-serif;fill:#000000">TupleSpace</text>
-    <path
-       d="m 282,64.2969 c 0,-10 18,-10 18,-10 0,0 18,0 18,10 v 26 c 0,10 -18,10 -18,10 0,0 -18,0 -18,-10 v -26"
-       style="fill:#fefece;stroke:#000000;stroke-width:1.5;filter:url(#f1jy2p2jl79jiy)"
-       id="path57"
-       inkscape:connector-curvature="0" />
-    <path
-       d="m 282,64.2969 c 0,10 18,10 18,10 0,0 18,0 18,-10"
-       style="fill:none;stroke:#000000;stroke-width:1.5"
-       id="path59"
-       inkscape:connector-curvature="0" />
-    <text
-       font-size="14"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="82"
-       x="256"
-       y="513.0498"
-       id="text61"
-       style="font-size:14px;font-family:sans-serif;fill:#000000">TupleSpace</text>
-    <path
-       d="m 282,526.3516 c 0,-10 18,-10 18,-10 0,0 18,0 18,10 v 26 c 0,10 -18,10 -18,10 0,0 -18,0 -18,-10 v -26"
-       style="fill:#fefece;stroke:#000000;stroke-width:1.5;filter:url(#f1jy2p2jl79jiy)"
-       id="path63"
-       inkscape:connector-curvature="0" />
-    <path
-       d="m 282,526.3516 c 0,10 18,10 18,10 0,0 18,0 18,-10"
-       style="fill:none;stroke:#000000;stroke-width:1.5"
-       id="path65"
-       inkscape:connector-curvature="0" />
-    <path
-       d="m 420.5,90.2969 h 199 c 5,0 5,13.1484 5,13.1484 0,0 0,13.1485 -5,13.1485 h -199 c -5,0 -5,-13.1485 -5,-13.1485 0,0 0,-13.1484 5,-13.1484"
-       style="fill:#fefece;stroke:#a80036;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       id="path67"
-       inkscape:connector-curvature="0" />
-    <path
-       d="m 619.5,90.2969 c -5,0 -5,13.1484 -5,13.1484 0,13.1485 5,13.1485 5,13.1485"
-       style="fill:none;stroke:#a80036;stroke-width:2"
-       id="path69"
-       inkscape:connector-curvature="0" />
-    <text
-       font-size="14"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="189"
-       x="420.5"
-       y="108.292"
-       id="text71"
-       style="font-size:14px;font-family:sans-serif;fill:#000000">PendingCompletableFuture</text>
-    <path
-       d="m 420.5,500.0547 h 199 c 5,0 5,13.1484 5,13.1484 0,0 0,13.1485 -5,13.1485 h -199 c -5,0 -5,-13.1485 -5,-13.1485 0,0 0,-13.1484 5,-13.1484"
-       style="fill:#fefece;stroke:#a80036;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       id="path73"
-       inkscape:connector-curvature="0" />
-    <path
-       d="m 619.5,500.0547 c -5,0 -5,13.1484 -5,13.1484 0,13.1485 5,13.1485 5,13.1485"
-       style="fill:none;stroke:#a80036;stroke-width:2"
-       id="path75"
-       inkscape:connector-curvature="0" />
-    <text
-       font-size="14"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="189"
-       x="420.5"
-       y="518.0498"
-       id="text77"
-       style="font-size:14px;font-family:sans-serif;fill:#000000">PendingCompletableFuture</text>
-    <polygon
-       points="288,151.7266 292,147.7266 288,143.7266 298,147.7266 "
-       style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       id="polygon79" />
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="31.5"
-       x2="294"
-       y1="147.72659"
-       y2="147.72659"
-       id="line81" />
-    <text
-       font-size="13"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="24"
-       x="38.5"
-       y="144.9409"
-       id="text83"
-       style="font-size:13px;font-family:monospace;fill:#000000">out</text>
-    <text
-       font-size="13"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="52"
-       x="66.5"
-       y="142.6606"
-       id="text85"
-       style="font-size:13px;font-family:sans-serif;fill:#000000">of some</text>
-    <text
-       font-size="13"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="40"
-       x="122.5"
-       y="144.43449"
-       id="text87"
-       style="font-weight:bold;font-size:13px;font-family:monospace;fill:#000000">tuple</text>
-    <polygon
-       points="152,180.8594 148,176.8594 152,172.8594 142,176.8594 "
-       style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       id="polygon89" />
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="146"
-       x2="299"
-       y1="176.85941"
-       y2="176.85941"
-       id="line91" />
-    <text
-       font-size="13"
-       font-style="italic"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="41"
-       x="158"
-       y="171.7935"
-       id="text93"
-       style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000">create</text>
-    <polygon
-       points="42.5,209.9922 38.5,205.9922 42.5,201.9922 32.5,205.9922 "
-       style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       id="polygon95" />
-    <line
-       style="stroke:#a80036;stroke-width:1;stroke-dasharray:2, 2"
-       x1="36.5"
-       x2="299"
-       y1="205.9922"
-       y2="205.9922"
-       id="line97" />
-    <text
-       font-size="13"
-       font-style="italic"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="186"
-       x="48.5"
-       y="200.9263"
-       id="text99"
-       style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000">completable future reference</text>
-    <rect
-       height="3"
-       style="fill:#eeeeee;stroke:#eeeeee;stroke-width:1;filter:url(#f1jy2p2jl79jiy)"
-       width="736"
-       x="3"
-       y="234.55859"
-       id="rect101" />
-    <line
-       style="stroke:#000000;stroke-width:1"
-       x1="3"
-       x2="739"
-       y1="234.55859"
-       y2="234.55859"
-       id="line103" />
-    <line
-       style="stroke:#000000;stroke-width:1"
-       x1="3"
-       x2="739"
-       y1="237.55859"
-       y2="237.55859"
-       id="line105" />
-    <rect
-       height="23.132799"
-       style="fill:#eeeeee;stroke:#000000;stroke-width:2;filter:url(#f1jy2p2jl79jiy)"
-       width="155"
-       x="293.5"
-       y="223.9922"
-       id="rect107" />
-    <text
-       font-size="13"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="136"
-       x="299.5"
-       y="240.0591"
-       id="text109"
-       style="font-weight:bold;font-size:13px;font-family:sans-serif;fill:#000000">Behind the scenes</text>
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="300"
-       x2="342"
-       y1="278.25781"
-       y2="278.25781"
-       id="line111" />
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="342"
-       x2="342"
-       y1="278.25781"
-       y2="291.25781"
-       id="line113" />
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="301"
-       x2="342"
-       y1="291.25781"
-       y2="291.25781"
-       id="line115" />
-    <polygon
-       points="311,295.2578 307,291.2578 311,287.2578 301,291.2578 "
-       style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       id="polygon117" />
-    <text
-       font-size="13"
-       font-style="italic"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="24"
-       x="307"
-       y="273.19189"
-       id="text119"
-       style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000">add</text>
-    <text
-       font-size="13"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="0"
-       x="335"
-       y="273.19189"
-       id="text121"
-       style="font-size:13px;font-family:sans-serif;fill:#000000" />
-    <text
-       font-size="13"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="40"
-       x="335"
-       y="274.96579"
-       id="text123"
-       style="font-weight:bold;font-size:13px;font-family:monospace;fill:#000000">tuple</text>
-    <path
-       d="m 236,306.2578 h 77 v 7 l -10,10 h -67 v -17"
-       style="fill:#eeeeee;stroke:#000000;stroke-width:1"
-       id="path125"
-       inkscape:connector-curvature="0" />
-    <rect
-       height="148.66409"
-       style="fill:none;stroke:#000000;stroke-width:2"
-       width="493"
-       x="236"
-       y="306.25781"
-       id="rect127" />
-    <text
-       font-size="13"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="32"
-       x="251"
-       y="319.32471"
-       id="text129"
-       style="font-weight:bold;font-size:13px;font-family:sans-serif;fill:#000000">loop</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="43"
-       x="328"
-       y="318.46829"
-       id="text131"
-       style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000">[for all</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="98"
-       x="375"
-       y="319.96939"
-       id="text133"
-       style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000">PendingRequest</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="80"
-       x="477"
-       y="318.46829"
-       id="text135"
-       style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000">containing a</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="56"
-       x="561"
-       y="319.96939"
-       id="text137"
-       style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000">Template</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="59"
-       x="621"
-       y="318.46829"
-       id="text139"
-       style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000">matching</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="35"
-       x="684"
-       y="319.96939"
-       id="text141"
-       style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000">tuple</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="5"
-       x="719"
-       y="318.46829"
-       id="text143"
-       style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000">]</text>
-    <polygon
-       points="311,348.5234 307,344.5234 311,340.5234 301,344.5234 "
-       style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       id="polygon145" />
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="305"
-       x2="519"
-       y1="344.52341"
-       y2="344.52341"
-       id="line147" />
-    <text
-       font-size="13"
-       font-style="italic"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="86"
-       x="317"
-       y="339.45749"
-       id="text149"
-       style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000">get reference</text>
-    <polygon
-       points="508,377.6563 512,373.6563 508,369.6563 518,373.6563 "
-       style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       id="polygon151" />
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="300"
-       x2="514"
-       y1="373.65631"
-       y2="373.65631"
-       id="line153" />
-    <text
-       font-size="13"
-       font-style="italic"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="91"
-       x="307"
-       y="368.5903"
-       id="text155"
-       style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000">complete with</text>
-    <text
-       font-size="13"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="0"
-       x="402"
-       y="368.5903"
-       id="text157"
-       style="font-size:13px;font-family:sans-serif;fill:#000000" />
-    <text
-       font-size="13"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="40"
-       x="402"
-       y="370.3642"
-       id="text159"
-       style="font-weight:bold;font-size:13px;font-family:monospace;fill:#000000">tuple</text>
-    <path
-       d="m 246,388.6563 h 64 v 7 l -10,10 h -54 v -17"
-       style="fill:#eeeeee;stroke:#000000;stroke-width:1"
-       id="path161"
-       inkscape:connector-curvature="0" />
-    <rect
-       height="59.265598"
-       style="fill:none;stroke:#000000;stroke-width:2"
-       width="430"
-       x="246"
-       y="388.65631"
-       id="rect163" />
-    <text
-       font-size="13"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="19"
-       x="261"
-       y="401.72311"
-       id="text165"
-       style="font-weight:bold;font-size:13px;font-family:sans-serif;fill:#000000">alt</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="5"
-       x="325"
-       y="400.8667"
-       id="text167"
-       style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000">[</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="98"
-       x="330"
-       y="402.3678"
-       id="text169"
-       style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000">PendingRequest</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="156"
-       x="432"
-       y="400.8667"
-       id="text171"
-       style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000">is from some suspended</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="14"
-       x="592"
-       y="402.3678"
-       id="text173"
-       style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000">in</text>
-    <text
-       font-size="11"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="61"
-       x="610"
-       y="400.8667"
-       id="text175"
-       style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000">primitive]</text>
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="300"
-       x2="342"
-       y1="426.92191"
-       y2="426.92191"
-       id="line177" />
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="342"
-       x2="342"
-       y1="426.92191"
-       y2="439.92191"
-       id="line179" />
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="301"
-       x2="342"
-       y1="439.92191"
-       y2="439.92191"
-       id="line181" />
-    <polygon
-       points="311,443.9219 307,439.9219 311,435.9219 301,439.9219 "
-       style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       id="polygon183" />
-    <text
-       font-size="13"
-       font-style="italic"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="50"
-       x="307"
-       y="421.85599"
-       id="text185"
-       style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000">remove</text>
-    <text
-       font-size="13"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="0"
-       x="361"
-       y="421.85599"
-       id="text187"
-       style="font-size:13px;font-family:sans-serif;fill:#000000" />
-    <text
-       font-size="13"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="40"
-       x="361"
-       y="423.62979"
-       id="text189"
-       style="font-weight:bold;font-size:13px;font-family:monospace;fill:#000000">tuple</text>
-    <text
-       font-size="13"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="24"
-       x="405"
-       y="421.85599"
-       id="text191"
-       style="font-size:13px;font-family:sans-serif;fill:#000000">and</text>
-    <text
-       font-size="13"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="80"
-       x="433"
-       y="421.85599"
-       id="text193"
-       style="font-weight:bold;font-size:13px;font-family:sans-serif;fill:#000000">break loop</text>
-    <polygon
-       points="152,487.0547 148,483.0547 152,479.0547 142,483.0547 "
-       style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       id="polygon195" />
-    <line
-       style="stroke:#a80036;stroke-width:1"
-       x1="146"
-       x2="299"
-       y1="483.05469"
-       y2="483.05469"
-       id="line197" />
-    <text
-       font-size="13"
-       font-style="italic"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="91"
-       x="158"
-       y="477.9888"
-       id="text199"
-       style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000">complete with</text>
-    <text
-       font-size="13"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="0"
-       x="253"
-       y="477.9888"
-       id="text201"
-       style="font-size:13px;font-family:sans-serif;fill:#000000" />
-    <text
-       font-size="13"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="40"
-       x="253"
-       y="479.7626"
-       id="text203"
-       style="font-weight:bold;font-size:13px;font-family:monospace;fill:#000000">tuple</text>
-    <!--MD5=[840af0c7c366117f9b9b7eedf5fcb93a]
-@startuml
-title Design of the ""out"" primitive
-
-actor Agent
-queue CompletableFuture
-database TupleSpace
-queue PendingCompletableFuture
-
-Agent -> TupleSpace: ""out"" of some ""**tuple**""
-TupleSpace -> CompletableFuture: //create//
-Agent <- - TupleSpace: //completable future reference//
-
-== Behind the scenes ==
-
-TupleSpace -> TupleSpace : //add// ""**tuple**""
-
-loop for all ""**PendingRequest**"" containing a ""**Template**"" matching ""**tuple**""
-PendingCompletableFuture -> TupleSpace: //get reference//
-TupleSpace -> PendingCompletableFuture: //complete with// ""**tuple**""
-alt ""**PendingRequest**"" is from some suspended ""in"" primitive
-TupleSpace -> TupleSpace : //remove// ""**tuple**"" and **break loop**
-end
-end
-TupleSpace -> CompletableFuture: //complete with// ""**tuple**""
-@enduml
-
-PlantUML version 1.2019.11(Sun Sep 22 10:02:15 UTC 2019)
-(GPL source distribution)
-Java Runtime: Java(TM) SE Runtime Environment
-JVM: Java HotSpot(TM) 64-Bit Server VM
-Java Version: 1.7.0_25-b15
-Operating System: Linux
-Default Encoding: UTF-8
-Language: en
-Country: US
--->
-  </g>
+  <text
+     style="font-size:18px;font-family:sans-serif;fill:#000000"
+     id="text13"
+     y="29.3547"
+     x="238"
+     textLength="124"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="18">Design of the</text>
+  <text
+     style="font-size:18px;font-family:monospace;fill:#000000"
+     id="text15"
+     y="28.6679"
+     x="368"
+     textLength="33"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="18">out</text>
+  <text
+     style="font-size:18px;font-family:sans-serif;fill:#000000"
+     id="text17"
+     y="29.3547"
+     x="407"
+     textLength="84"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="18">primitive</text>
+  <rect
+     id="rect19"
+     y="314.49521"
+     x="215"
+     width="504"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f1ifo8v3novs2y)"
+     height="149.5985" />
+  <rect
+     id="rect21"
+     y="397.36081"
+     x="225"
+     width="443"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f1ifo8v3novs2y)"
+     height="59.7328" />
+  <line
+     id="line23"
+     y2="481.09369"
+     y1="123.8967"
+     x2="30"
+     x1="30"
+     style="stroke:#a80036;stroke-width:1;stroke-dasharray:5, 5" />
+  <line
+     id="line25"
+     y2="481.09369"
+     y1="123.8967"
+     x2="145"
+     x1="145"
+     style="stroke:#a80036;stroke-width:1;stroke-dasharray:5, 5" />
+  <line
+     id="line27"
+     y2="481.09369"
+     y1="123.8967"
+     x2="280"
+     x1="280"
+     style="stroke:#a80036;stroke-width:1;stroke-dasharray:5, 5" />
+  <line
+     id="line29"
+     y2="481.09369"
+     y1="123.8967"
+     x2="501"
+     x1="501"
+     style="stroke:#a80036;stroke-width:1;stroke-dasharray:5, 5" />
+  <text
+     style="font-size:14px;font-family:sans-serif;fill:#000000"
+     id="text31"
+     y="120.595"
+     x="5"
+     textLength="44"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="14">Agent</text>
+  <circle
+     r="8"
+     id="ellipse33"
+     style="fill:#fefece;stroke:#a80036;stroke-width:2;filter:url(#f1ifo8v3novs2y)"
+     cy="50.599899"
+     cx="30" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path35"
+     style="fill:none;stroke:#a80036;stroke-width:2;filter:url(#f1ifo8v3novs2y)"
+     d="m 30,58.5999 v 27 m -13,-19 h 26 m -13,19 -13,15 m 13,-15 13,15" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path43"
+     style="fill:#fefece;stroke:#a80036;stroke-width:2;filter:url(#f1ifo8v3novs2y)"
+     d="m 70,97.5999 h 150 c 5,0 5,13.1484 5,13.1484 0,0 0,13.1484 -5,13.1484 H 70 c -5,0 -5,-13.1484 -5,-13.1484 0,0 0,-13.1484 5,-13.1484" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path45"
+     style="fill:none;stroke:#a80036;stroke-width:2"
+     d="m 220,97.5999 c -5,0 -5,13.1484 -5,13.1484 0,13.1484 5,13.1484 5,13.1484" />
+  <text
+     style="font-size:14px;font-family:sans-serif;fill:#000000"
+     id="text47"
+     y="115.595"
+     x="70"
+     textLength="140"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="14">CompletableFuture</text>
+  <text
+     style="font-size:14px;font-family:sans-serif;fill:#000000"
+     id="text55"
+     y="120.595"
+     x="235"
+     textLength="84"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="14">TupleSpace</text>
+  <path
+     inkscape:connector-curvature="0"
+     id="path57"
+     style="fill:#fefece;stroke:#000000;stroke-width:1.5;filter:url(#f1ifo8v3novs2y)"
+     d="m 262,71.5999 c 0,-10 18,-10 18,-10 0,0 18,0 18,10 v 26 c 0,10 -18,10 -18,10 0,0 -18,0 -18,-10 v -26" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path59"
+     style="fill:none;stroke:#000000;stroke-width:1.5"
+     d="m 262,71.5999 c 0,10 18,10 18,10 0,0 18,0 18,-10" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path67"
+     style="fill:#fefece;stroke:#a80036;stroke-width:2;filter:url(#f1ifo8v3novs2y)"
+     d="m 397,97.5999 h 208 c 5,0 5,13.1484 5,13.1484 0,0 0,13.1484 -5,13.1484 H 397 c -5,0 -5,-13.1484 -5,-13.1484 0,0 0,-13.1484 5,-13.1484" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path69"
+     style="fill:none;stroke:#a80036;stroke-width:2"
+     d="m 605,97.5999 c -5,0 -5,13.1484 -5,13.1484 0,13.1484 5,13.1484 5,13.1484" />
+  <text
+     style="font-size:14px;font-family:sans-serif;fill:#000000"
+     id="text71"
+     y="115.595"
+     x="397"
+     textLength="198"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="14">PendingCompletableFuture</text>
+  <polygon
+     id="polygon79"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="268,151.4968 278,155.4968 268,159.4968 272,155.4968 " />
+  <line
+     id="line81"
+     y2="155.4968"
+     y1="155.4968"
+     x2="274"
+     x1="30"
+     style="stroke:#a80036;stroke-width:1" />
+  <text
+     style="font-size:13px;font-family:monospace;fill:#000000"
+     id="text83"
+     y="149.9348"
+     x="37"
+     textLength="24"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13">out</text>
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text85"
+     y="150.4308"
+     x="65"
+     textLength="53"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13">of some</text>
+  <text
+     style="font-weight:bold;font-size:13px;font-family:monospace;fill:#000000"
+     id="text87"
+     y="149.8828"
+     x="122"
+     textLength="40"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="13">tuple</text>
+  <polygon
+     id="polygon89"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="156,180.6296 146,184.6296 156,188.6296 152,184.6296 " />
+  <line
+     id="line91"
+     y2="184.62959"
+     y1="184.62959"
+     x2="279"
+     x1="150"
+     style="stroke:#a80036;stroke-width:1" />
+  <text
+     style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text93"
+     y="179.5636"
+     x="162"
+     textLength="41"
+     lengthAdjust="spacingAndGlyphs"
+     font-style="italic"
+     font-size="13">create</text>
+  <polygon
+     id="polygon95"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="41,209.7624 31,213.7624 41,217.7624 37,213.7624 " />
+  <line
+     id="line97"
+     y2="213.76241"
+     y1="213.76241"
+     x2="279"
+     x1="35"
+     style="stroke:#a80036;stroke-width:1;stroke-dasharray:2, 2" />
+  <text
+     style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text99"
+     y="208.6965"
+     x="47"
+     textLength="190"
+     lengthAdjust="spacingAndGlyphs"
+     font-style="italic"
+     font-size="13">completable future reference</text>
+  <rect
+     id="rect101"
+     y="242.3288"
+     x="0"
+     width="729"
+     style="fill:#eeeeee;stroke:#eeeeee;stroke-width:1;filter:url(#f1ifo8v3novs2y)"
+     height="3" />
+  <line
+     id="line103"
+     y2="242.3288"
+     y1="242.3288"
+     x2="729"
+     x1="0"
+     style="stroke:#000000;stroke-width:1" />
+  <line
+     id="line105"
+     y2="245.3288"
+     y1="245.3288"
+     x2="729"
+     x1="0"
+     style="stroke:#000000;stroke-width:1" />
+  <rect
+     id="rect107"
+     y="231.76241"
+     x="286.5"
+     width="156"
+     style="fill:#eeeeee;stroke:#000000;stroke-width:2;filter:url(#f1ifo8v3novs2y)"
+     height="23.132799" />
+  <text
+     style="font-weight:bold;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text109"
+     y="247.8293"
+     x="292.5"
+     textLength="137"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="13">Behind the scenes</text>
+  <line
+     id="line111"
+     y2="286.49521"
+     y1="286.49521"
+     x2="322"
+     x1="280"
+     style="stroke:#a80036;stroke-width:1" />
+  <line
+     id="line113"
+     y2="299.49521"
+     y1="286.49521"
+     x2="322"
+     x1="322"
+     style="stroke:#a80036;stroke-width:1" />
+  <line
+     id="line115"
+     y2="299.49521"
+     y1="299.49521"
+     x2="322"
+     x1="281"
+     style="stroke:#a80036;stroke-width:1" />
+  <polygon
+     id="polygon117"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="291,295.4952 281,299.4952 291,303.4952 287,299.4952 " />
+  <text
+     style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text119"
+     y="281.42929"
+     x="287"
+     textLength="24"
+     lengthAdjust="spacingAndGlyphs"
+     font-style="italic"
+     font-size="13">add</text>
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text121"
+     y="281.42929"
+     x="315"
+     textLength="0"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13" />
+  <text
+     style="font-weight:bold;font-size:13px;font-family:monospace;fill:#000000"
+     id="text123"
+     y="280.8812"
+     x="315"
+     textLength="40"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="13">tuple</text>
+  <path
+     inkscape:connector-curvature="0"
+     id="path125"
+     style="fill:#eeeeee;stroke:#000000;stroke-width:1"
+     d="m 215,314.4952 h 78 v 7 l -10,10 h -68 v -17" />
+  <rect
+     id="rect127"
+     y="314.49521"
+     x="215"
+     width="504"
+     style="fill:none;stroke:#000000;stroke-width:2"
+     height="149.5985" />
+  <text
+     style="font-weight:bold;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text129"
+     y="327.5621"
+     x="230"
+     textLength="33"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="13">loop</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000"
+     id="text131"
+     y="327.10089"
+     x="308"
+     textLength="47"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">[for all</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000"
+     id="text133"
+     y="326.63708"
+     x="359"
+     textLength="98"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">PendingRequest</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000"
+     id="text135"
+     y="327.10089"
+     x="461"
+     textLength="83"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">containing a</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000"
+     id="text137"
+     y="326.63708"
+     x="548"
+     textLength="56"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">Template</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000"
+     id="text139"
+     y="327.10089"
+     x="608"
+     textLength="62"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">matching</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000"
+     id="text141"
+     y="326.63708"
+     x="674"
+     textLength="35"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">tuple</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000"
+     id="text143"
+     y="327.10089"
+     x="709"
+     textLength="5"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">]</text>
+  <polygon
+     id="polygon145"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="291,348.7608 281,352.7608 291,356.7608 287,352.7608 " />
+  <line
+     id="line147"
+     y2="352.7608"
+     y1="352.7608"
+     x2="500"
+     x1="285"
+     style="stroke:#a80036;stroke-width:1" />
+  <text
+     style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text149"
+     y="347.69489"
+     x="297"
+     textLength="87"
+     lengthAdjust="spacingAndGlyphs"
+     font-style="italic"
+     font-size="13">get reference</text>
+  <polygon
+     id="polygon151"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="489,378.3608 499,382.3608 489,386.3608 493,382.3608 " />
+  <line
+     id="line153"
+     y2="382.36081"
+     y1="382.36081"
+     x2="495"
+     x1="280"
+     style="stroke:#a80036;stroke-width:1" />
+  <text
+     style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text155"
+     y="377.29489"
+     x="287"
+     textLength="93"
+     lengthAdjust="spacingAndGlyphs"
+     font-style="italic"
+     font-size="13">complete with</text>
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text157"
+     y="377.29489"
+     x="384"
+     textLength="0"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13" />
+  <text
+     style="font-weight:bold;font-size:13px;font-family:monospace;fill:#000000"
+     id="text159"
+     y="376.7468"
+     x="384"
+     textLength="40"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="13">tuple</text>
+  <path
+     inkscape:connector-curvature="0"
+     id="path161"
+     style="fill:#eeeeee;stroke:#000000;stroke-width:1"
+     d="m 225,397.3608 h 66 v 7 l -10,10 h -56 v -17" />
+  <rect
+     id="rect163"
+     y="397.36081"
+     x="225"
+     width="443"
+     style="fill:none;stroke:#000000;stroke-width:2"
+     height="59.7328" />
+  <text
+     style="font-weight:bold;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text165"
+     y="410.4277"
+     x="240"
+     textLength="21"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="13">alt</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000"
+     id="text167"
+     y="409.96649"
+     x="306"
+     textLength="5"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">[</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000"
+     id="text169"
+     y="409.50281"
+     x="311"
+     textLength="98"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">PendingRequest</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000"
+     id="text171"
+     y="409.96649"
+     x="413"
+     textLength="163"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">is from some suspended</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:monospace;fill:#000000"
+     id="text173"
+     y="409.50281"
+     x="580"
+     textLength="14"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">in</text>
+  <text
+     style="font-weight:bold;font-size:11px;font-family:sans-serif;fill:#000000"
+     id="text175"
+     y="409.96649"
+     x="598"
+     textLength="65"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="11">primitive]</text>
+  <line
+     id="line177"
+     y2="436.09369"
+     y1="436.09369"
+     x2="322"
+     x1="280"
+     style="stroke:#a80036;stroke-width:1" />
+  <line
+     id="line179"
+     y2="449.09369"
+     y1="436.09369"
+     x2="322"
+     x1="322"
+     style="stroke:#a80036;stroke-width:1" />
+  <line
+     id="line181"
+     y2="449.09369"
+     y1="449.09369"
+     x2="322"
+     x1="281"
+     style="stroke:#a80036;stroke-width:1" />
+  <polygon
+     id="polygon183"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="291,445.0937 281,449.0937 291,453.0937 287,449.0937 " />
+  <text
+     style="font-style:italic;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text185"
+     y="431.0278"
+     x="287"
+     textLength="50"
+     lengthAdjust="spacingAndGlyphs"
+     font-style="italic"
+     font-size="13">remove</text>
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text187"
+     y="431.0278"
+     x="341"
+     textLength="0"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13" />
+  <text
+     style="font-weight:bold;font-size:13px;font-family:monospace;fill:#000000"
+     id="text189"
+     y="430.47971"
+     x="341"
+     textLength="40"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="13">tuple</text>
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text191"
+     y="431.0278"
+     x="385"
+     textLength="24"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13">and</text>
+  <text
+     style="font-weight:bold;font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text193"
+     y="431.0278"
+     x="413"
+     textLength="81"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="13">break loop</text>
 </svg>

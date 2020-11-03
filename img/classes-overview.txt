@@ -1,0 +1,34 @@
+@startuml
+interface Behaviour 
+
+class Parallel
+
+class Sequence
+
+class Wait
+
+class DoWhile
+
+Behaviour <|-- Parallel
+Behaviour <|-- Sequence 
+Behaviour <|-- Wait
+Sequence <|-- DoWhile
+
+class AwaitPromise <<abstract>>
+note left: Generic behaviour for\nawaiting a completable future
+class LindaOperation <<abstract>>
+note left: Generic behaviour for\nperforming a Linda operation
+class Out
+class In
+class Rd
+class Get
+class Count
+
+Behaviour <|-- AwaitPromise
+AwaitPromise <|-- LindaOperation
+LindaOperation <|-- Out
+LindaOperation <|-- In
+LindaOperation <|-- Rd
+LindaOperation <|-- Get
+LindaOperation <|-- Count
+@enduml

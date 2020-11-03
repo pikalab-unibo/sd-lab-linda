@@ -38,6 +38,7 @@
 \AtBeginSubsection{
 	\begin{frame}[c]\frametitle{Next in Line\ldots}
 		\begin{multicols}{2}
+			\small
 			\tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/shaded, subsubsectionstyle=hide/hide]
 		\end{multicols}
 	\end{frame}
@@ -88,14 +89,12 @@
 
 \end{frame}
 
-\subsection{About the practical activities}
-
 \begin{frame}
 	\frametitle{Lecture Goals}
 	
 	\begin{itemize}
 		
-		\item Familiarise with the \linda{} model in all its aspects
+		\item Become familiar with the \linda{} model in all its aspects
 		
 		\vfill
 		
@@ -108,9 +107,16 @@
 		\vfill
 		
 		\item Learn how to recognise the many \emph{subtleties} of an informal specification
+		
+		\vfill
+		
+		\item Learn how \linda{} enables several \emph{interaction patterns} for agents
+		
 	\end{itemize}
 
 \end{frame}
+
+\subsection{About the practical activities}
 
 \begin{frame}
 	\frametitle{Lab \labN{} Repository on GitLab}
@@ -570,7 +576,7 @@
 	\end{itemize}  
 \end{frame}
 
-\section{Lab Activity}
+\section{Exercises (pt. 1)}
 
 \startExercise
 
@@ -654,13 +660,17 @@
 
 \framebreak
 
-A valid implementation must satisfy the following constraints:
+Activity:
 %
 \bigskip
 %
 \begin{itemize}
 	
-	\item The \alert{unit tests} contained within the \alert{\texttt{TestTextualSpace}} class must be satisfied
+	\item Provide an implementation for the \texttt{TextualSpace} interface\ldots
+	
+	\bigskip
+	
+	\item \ldots such that the \alert{unit tests} in \alert{\texttt{TestTextualSpace}} class are satisfied
 	%
 	\begin{itemize}
 		\item use them as usage examples
@@ -668,17 +678,17 @@ A valid implementation must satisfy the following constraints:
 
 	\bigskip
 	
-	\item The tuple space must work regardless of the particular Executor Service it is initialised with
+	\item The tuple space must work regardless of the particular \texttt{ExecutorService} it is initialised with
 	
 	\bigskip
 	
 	\item The provided implementation must adhere to the \alert{\linda{} semantics} described on slide \ref{linda-semantics}
 	
-	\bigskip
-	
-	\item[!] If you feel confident with these concepts you can start your exercise now. 
-	%
-	Otherwise, just wait for the teacher's tutorial
+%	\bigskip
+%	
+%	\item[!] If you feel confident with these concepts you can start your exercise now. 
+%	%
+%	Otherwise, just wait for the teacher's tutorial
 \end{itemize}
 \end{frame}
 
@@ -910,7 +920,390 @@ Once you are done with the exercise, try to answer on the following questions (p
 	
 \end{frame}
 
-%===============================================================================
+\section{Mediating Agents' Interaction}
+
+\begin{frame}
+\frametitle{Perspective}
+
+	\begin{block}{What are now capable of}
+		\begin{itemize}
+			\item[$\checkmark$] instantiating several \alert{agents}, each one carrying on several \alert{behaviours}
+			\item[$\checkmark$] instantiating several \alert{tuple spaces}
+			\item[$\checkmark$] let one or more \alert{Java threads} manipulate those tuple spaces 
+			%
+			\begin{itemize}
+				\item via \linda{} primitives as method calls
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+
+	\vfill
+	
+	\begin{alertblock}{What are we missing}
+		\begin{itemize}
+			\item[$\times$] lettings agents manipulate tuple spaces \alert{via behaviours}
+			\item[$\times$] lettings agents \alert{exchange messages} through tuple spaces
+			\item[$\times$] lettings agents \alert{interact} over the network
+		\end{itemize}
+	\end{alertblock}
+	
+\end{frame}
+
+\subsection{Mixing Tuple Spaces and Agents}
+
+\begin{frame}
+	\frametitle{Injecting Tuple Spaces into our Agent framework}
+	
+	\begin{alertblock}{Focus on}
+		\begin{itemize}
+			\item[$\rightarrow$] lettings agents manipulate tuple spaces \alert{via behaviours}
+		\end{itemize}
+	\end{alertblock}
+	
+	\pause
+	
+	\begin{exampleblock}{Main idea}
+		\begin{itemize}
+			\item let all agents from the same environment access a \alert{shared} pool of tuple spaces
+			\item endow agents with ad-hoc behaviour types to exploit \linda{} primitives
+		\end{itemize}
+	\end{exampleblock}
+	
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Extending the Environment}
+	
+	\begin{alertblock}{Focus on}
+		\begin{itemize}
+			\item[$\rightarrow$] lettings agents manipulate tuple spaces \alert{via behaviours}
+			%
+			\begin{itemize}
+				\item[$\rightarrow$] let all agents from the same environment access a \alert{shared} pool of tuple spaces
+			\end{itemize}
+		\end{itemize}
+	\end{alertblock}
+
+	\bigskip
+	
+	Suppose each \texttt{Environment} exposes a method to let agents access \texttt{TextualSpace} instances:
+	%
+	\lstinputlisting[language=Java]{./code/Environment.java}
+	
+	Intended usage:
+	%
+	\medskip
+	%
+	\begin{itemize}
+		\item agents can always access their environments via their \texttt{getEnvironment()} method
+		
+		\medskip
+		
+		\item they can always access the tuple space named \alert{\texttt{"tsName"}} through:
+		%
+		\begin{center}\ttfamily
+			getEnvironment().getTextualSpace(\alert{"tsName"})
+		\end{center}
+	
+		\medskip
+		
+		\item if two or more agents access the same tuple space name, they get the \alert{same} instance
+		%
+		\begin{itemize}
+			\item thus tuple spaces are \alert{shared} among agents
+		\end{itemize}
+	
+		\medskip
+		
+		\item if a tuple space name has never been accessed, the corresponding tuple space is created \alert{on the fly} upon first access
+		
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Extending the Available Behaviours}
+	
+	\begin{alertblock}{Focus on}
+		\begin{itemize}
+			\item[$\rightarrow$] lettings agents manipulate tuple spaces \alert{via behaviours}
+			%
+			\begin{itemize}
+				\item[$\checkmark$] let all agents from the same environment access a \alert{shared} pool of tuple spaces
+				\item[$\rightarrow$] endow agents with ad-hoc behaviour types to exploit \linda{} primitives
+			\end{itemize}
+		\end{itemize}
+	\end{alertblock}
+	
+	\framebreak
+	
+	Suppose the \texttt{Behaviour} hierarchy is extended as follows:
+	%
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{./img/classes-overview.pdf}
+	\end{center}
+
+	\framebreak
+	
+%	Design rationale:
+%	%
+%	\medskip
+%	%
+	\begin{itemize}
+		\item \texttt{Out}, \texttt{In}, etc. are \alert{behaviours} aimed at letting an agent perform the corresponding \linda{} operation on some tuple space, given its name
+		%
+		\begin{itemize}
+			\item in a \alert{synchronous} way, w.r.t. the behaviour
+			\item meaning that the behaviour is \alert{paused} after the primitive \emph{invocation}$\ldots$
+			\item $\ldots$ and resumed after its \emph{completion}
+			\item yet, the agent may execute \emph{other} behaviours in the meanwhile
+		\end{itemize}
+		
+		\medskip
+		
+		\item \texttt{LindaOperation} is the abstract behaviour letting an agent perform \alert{any} \linda{} operation on some tuple space, given its name
+		%
+		\begin{itemize}
+			\item in a \alert{synchronous} way, w.r.t. the behaviour
+		\end{itemize}
+		
+		\medskip
+		
+		\item \texttt{AwaitPromise} is the abstract behaviour letting an agent await the completion of \alert{any} \texttt{CompletableFuture}
+		%
+		\begin{itemize}
+			\item in a \alert{synchronous} way, w.r.t. the behaviour
+			\item in a \alert{non-blocking} way, w.r.t. the agent
+			\item[!] as all \linda{} primitives rely on \texttt{CompletableFuture}s in our implementation, this is where most of the complexity lies
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+\section{Exercises (pt. 2)}
+
+\startExercise
+
+\subsection{\linda{} Primitives as Behaviours} 
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Exercise \currentExercise{} -- \linda{} Primitives as Behaviours}
+	
+	Activity:
+	%
+	\bigskip
+	%
+	\begin{itemize}
+		
+		\item Provide an implementation for the classes: \texttt{AwaitPromise}, \texttt{Out}, \texttt{In}, etc.
+		
+		\bigskip
+		
+		\item \ldots such that the \alert{unit tests} in \alert{\texttt{TestAgentWithTupleSpaces}} class are satisfied
+		%
+		\begin{itemize}
+			\item use them as usage examples
+		\end{itemize}
+		
+		\bigskip
+		
+		\item More details about the to-be-implemented behaviours are provided in the next slides
+		
+		\bigskip
+		
+		\item Notice that most tests relies on two or more behaviours
+		%
+		\begin{itemize}
+			\item thus, you may have to implement several behaviours before tests can pass
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
+\subsubsection{Awaiting Promises}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Exercise \currentExercise{} -- The \texttt{AwaitPromise} Behaviour}
+	
+	\begin{block}{The \texttt{AwaitPromise\textit{<T>}} behaviour}
+		\begin{itemize}
+			\item it waits for some \texttt{CompletableFuture\textit{<T>}} to be \alert{completed}, without blocking the agent
+			%
+			\begin{itemize}\small
+				\item this is not used directly, but it is enabling for other primitives
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+
+	\framebreak
+
+	\begin{columns}
+		\begin{column}{.8\linewidth}
+			\begin{exampleblock}{\texttt{AwaitPromise\textit{<T>}} -- Design Rationale (pt 1)}
+				\begin{itemize}
+					\item It is an \textbf{abstract}, \alert{state\emph{ful}} and \alert{atomic} behaviour
+					%
+					\begin{itemize}
+						\item it is stateful because it has several \alert{phases}
+						\item[$\rightarrow$] we need to override the \texttt{\alert{deepClone()}} method \textbf{in sub-classes}
+					\end{itemize}
+					
+					\medskip
+					
+					\item It aims at letting agents use \alert{\texttt{CompletableFuture}s} within behaviours
+					%
+					\begin{itemize}
+						\item[why?] remember all those \texttt{CompletableFuture}s from the \alert{\texttt{TupleSpace}} interface?
+					\end{itemize}
+					
+					\medskip
+					
+					\item It can be conceived as a FSA ranging through 4 states (a.k.a. \alert{phases})
+					%
+					\begin{itemize}
+						\item FSA represented on the right
+					\end{itemize}
+					
+				\end{itemize}
+			\end{exampleblock}
+		\end{column}
+		\begin{column}{.18\linewidth}
+			\includegraphics[width=\linewidth]{img/AwaitFSA.pdf}
+		\end{column}
+	\end{columns}
+
+	\framebreak
+	
+	\begin{exampleblock}{\texttt{AwaitPromise\textit{<T>}} -- Design Rationale (pt 2)}
+		\begin{itemize}
+			\item It exposes 2 callbacks to be overridden by users:
+			%
+			\begin{description}\small
+				\item[\texttt{invokeAsync(\ldots)}] returning the \texttt{CompletableFuture\textit{<T>}} this behaviour should wait for
+				\item[\texttt{onResult(\ldots)}] callback to be invoked when the \texttt{CompletableFuture} is completed
+			\end{description}
+			
+			\medskip
+			
+			\item When the \texttt{execute(...)} is firstly run, it adds an handler intercepting the \texttt{CompletableFuture}'s completion
+			%
+			\begin{itemize}
+				\item after that, the current behaviour must be \alert{paused}
+				\item it must be resumed when the \texttt{CompletableFuture} is completed
+			\end{itemize}
+			
+			\medskip
+			
+			\item The $2^{nd}$ time the \texttt{execute(...)} is run must be after the \texttt{CompletableFuture} completion
+			%
+			\begin{itemize}
+				\item this time, it must invoke the \texttt{onResult(...)} callback
+				\item only then the \texttt{Await} behaviour can terminate
+			\end{itemize}
+			
+		\end{itemize}
+	\end{exampleblock}
+	
+\end{frame}
+
+\startExercise
+
+\subsection{Message Passing through \linda{}} 
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Exercise \currentExercise{} -- Message Passing through \linda{}}
+	
+	\begin{alertblock}{This is an \emph{unconstrained} exercise}
+		\begin{itemize}
+			\item you are free to design your solution as you prefer
+			\item no test is provided: testing is up to you
+		\end{itemize}
+	\end{alertblock}
+
+	\bigskip
+	
+	\begin{alertblock}{This is a \textbf{mandatory} exercise}
+		\begin{itemize}
+			\item your solution will be inspected during lab activity verification
+			\item you will be asked to discuss your solution
+			\item collaboration and discussion with your colleagues (on the forum) is allowed
+			\item asking for help on the forum is allowed
+		\end{itemize}
+	\end{alertblock}
+
+	\framebreak
+	
+	\begin{block}{\textbf{Goal}}
+		\begin{itemize}
+			\item Let agents \emph{communicate} via message-passing
+			\item Realise message passing \alert{on top} of \linda{}
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{How}
+		\begin{enumerate}
+			\item Endow agents with 2 more behaviour types: \alert{\texttt{Send}} and \alert{\texttt{Receive}}
+			%
+			\begin{itemize}
+				\item \texttt{Send} may extend / exploit \texttt{Out}
+				\item \texttt{Receive} may extend / exploit \texttt{In}
+				\item Messages should be implemented as \texttt{StringTuple}s
+				\item \texttt{TextualSpace}s may be exploited as \alert{inboxes}
+			\end{itemize}
+			\item Design your own solution, implement it, \textbf{and test it}
+			%
+			\begin{itemize}
+				\item tests are the only thing proving your solution works
+				\item[!] \textbf{tests are part of the exercise and will be assessed}
+			\end{itemize}
+		\end{enumerate}
+	\end{block}
+
+	\begin{exampleblock}{Subtleties}
+		\begin{itemize}
+			\item Each agent should only be able to receive messages \alert{directed towards it}
+			\item An agent may be willing to \alert{select} messages according to the sender or the content, if more messages are available
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\startExercise
+
+\subsection{Dining Philosophers (Advanced)} 
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Exercise \currentExercise{} -- Dining Philosophers (Optional)}
+	
+	\begin{alertblock}{This is an \textbf{advanced} exercise}
+		\begin{itemize}
+			\item feel free to skip it
+			\item try it if you are curious about using TS in a \alert{multi-}agent scenario
+		\end{itemize}
+	\end{alertblock}
+	
+	\bigskip
+	
+	\begin{alertblock}{This is an \emph{unconstrained} exercise}
+		\begin{itemize}
+			\item you are free to design your solution as you prefer
+			\item no test is provided: testing is up to you
+		\end{itemize}
+	\end{alertblock}
+	
+	\bigskip
+	
+	\begin{block}{\textbf{Goal}}
+		\begin{itemize}
+			\item Implement a simple MAS involving $N \geq 3$ \alert{dining philosophers}
+			\item Use \linda{} tuples to model \& implement chops
+			\item Use \linda{} primitives to manipulate chops
+			\item Provide a \alert{deadlock-free} implementation
+		\end{itemize}
+	\end{block}
+	
+\end{frame}
+
+%=======================================================================
 \section*{}
 %===============================================================================
 
